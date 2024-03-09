@@ -1,0 +1,23 @@
+.defaultBtn {
+  border: none;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  color: var(--dark_gray);
+}
+.buttonWithIcon {
+  display: flex;
+  justify-content: space-between;
+}
+.lightRed {
+  background-color: var(--light_red);
+  color: var(--white_color);
+}
+.lightGreen {
+  background-color: var(--light_green);
+  color: var(--white_color);
+}
+.darkGrayish {
+  background-color: var(--dark_gray);
+  color: var(--white_color);
+}

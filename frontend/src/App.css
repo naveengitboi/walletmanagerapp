@@ -1,6 +1,113 @@
-*
-{
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap");
+
+/* font-family: "Sora", sans-serif; */
+/* font-family: "Montserrat", sans-serif; */
+* {
   margin: 0;
   box-sizing: border-box;
   padding: 0;
+}
+
+:root {
+  /* font family */
+  --sora: "Sora", sans-serif;
+  --monte: "Montserrat", sans-serif;
+
+  /* font size */
+  --h_50px: 3.125rem;
+  --h_32px: 2rem;
+  --h_26px: 1.625rem;
+  --p_20px: 1.25rem;
+  --p_16px: 1.125rem;
+  --p_14px: 0.9rem;
+  --tiny_text: 0.75rem;
+
+  /* colors */
+  --light_gray: #efefef;
+  --white_color: white;
+  --blue_color: #7091f5;
+  --light_green: #00ab88;
+  --light_gray: #636363;
+  --light_red: #ff6969;
+  --dark_gray: #3b3b3b;
+  --dark_green: #00725a;
+  --dark_red: #c90000;
+
+  /* svg */
+  --svg_size: 1.5rem;
+  --svg_color:black;
+}
+
+.hLarge {
+  font-family: "Sora";
+  font-size: var(--h_50px);
+  font-weight: 600;
+}
+
+.hMedium {
+  font-family: "Sora";
+  font-size: var(--h_32px);
+  font-weight: 600;
+}
+
+.hSmall {
+  font-family: "Sora";
+  font-size: var(--h_26px);
+  font-weight: 600;
+}
+
+.pLarge {
+  font-family: var(--sora);
+  font-size: var(--p_20px);
+  font-weight: 600;
+}
+.pMedium {
+  font-family: var(--monte);
+  font-size: var(--p_16px);
+}
+.pSmall {
+  font-family: var(--monte);
+  font-size: var(--p_14px);
+}
+
+.tinyText {
+  font-family: var(--monte);
+  font-size: var(--tiny_text);
+  font-weight: 600;
+}
+
+.glassBg {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.39),
+    rgba(255, 255, 255, 0)
+  );
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border-image: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0)) 50;
+  border-width: 2px;
+  border-style: solid;
+}
+
+/* body */
+body {
+  color: var(--dark_gray);
+  background-image: url("/public/bg_svg.svg");
+  background-size: cover;
+}
+
+.appContainer {
+  display: flex;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.routesContainer {
+  padding: 10vh 2rem;
+    overflow-y: auto;
+}
+
+.insideRoutesContainer {
+  padding: 2rem;
+  border-radius: 0.85rem;
+
 }
