@@ -18,8 +18,8 @@
   --h_32px: 2rem;
   --h_26px: 1.625rem;
   --p_20px: 1.25rem;
-  --p_16px: 1.125rem;
-  --p_14px: 0.9rem;
+  --p_16px: 1rem;
+  --p_14px: 0.879rem;
   --tiny_text: 0.75rem;
 
   /* colors */
@@ -75,7 +75,15 @@
   font-size: var(--tiny_text);
   font-weight: 600;
 }
-
+.darkGreen {
+  color: var(--dark_green);
+}
+.darkRed {
+  color: var(--dark_red);
+}
+.darkGray {
+  color: var(--dark_gray);
+}
 .glassBg {
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.39),
@@ -85,6 +93,40 @@
   backdrop-filter: blur(5px);
   border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 0.85rem;
+}
+
+/* buttons */
+.defaultBtn {
+  border: none;
+  background-color: white;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  color: var(--dark_gray);
+  cursor: pointer;
+  font-family: var(--sora);
+  font-weight: 600;
+}
+.buttonWithIcon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.buttonWithIcon svg {
+  font-size: var(--svg_size);
+  color: var(--svg_color);
+  margin: 0 0.85rem;
+}
+.lightGreenBg {
+  background-color: var(--dark_green);
+  color: var(--white_color);
+}
+.darkRedBg {
+  background-color: var(--dark_red);
+  color: var(--white_color);
+}
+.darkGrayBg {
+  background-color: var(--dark_gray);
+  color: var(--white_color);
 }
 
 /* body */

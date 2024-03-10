@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header';
 import SideNav from './components/SideNav';
 import Dashboard from './pages/Dashboard';
+import Transactions from './pages/Transactions';
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
             <div className="insideRoutesContainer glassBg"> 
             <Routes>
               <Route path='/' element={<Dashboard/>} />
+              <Route path='/transactions' element={<Transactions/>} />
             </Routes>
             </div>
           </div>

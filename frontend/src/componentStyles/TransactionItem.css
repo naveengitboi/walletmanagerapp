@@ -1,0 +1,29 @@
+.tsItem {
+  background: white;
+  padding: 0.5rem 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tsItem .userProfile {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.tsItem .userProfile img {
+  width: 100%;
+  object-fit: cover;
+}
+.tsItem .pMedium {
+  font-family: var(--sora);
+  font-weight: 600;
+}
+
+.tsItem .actionBtn {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--light_red);
+  font-weight: 600;
+  font-family: var(--sora);
+  color: var(--white_color);
+  cursor: pointer;
+}

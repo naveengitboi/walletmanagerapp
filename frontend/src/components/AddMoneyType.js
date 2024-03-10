@@ -1,6 +1,5 @@
 import React from 'react'
 import '../componentStyles/AddMoneyType.css'
-import Button from '../components/Button'
 
 function AddMoneyType() {
     return (
@@ -9,7 +8,7 @@ function AddMoneyType() {
                 <p className='pSmall'>
                     $
                 </p>
-                <input type="text" placeholder='Amount' className='hMedium' />
+                <input type="text" placeholder='Amount' className='pLarge' />
             </div>
             <div className="amtInputContainer glassBg">
                 <p className='pSmall'>
@@ -27,11 +26,13 @@ function AddMoneyType() {
                 <p className='pSmall'>
                     $
                 </p>
-                <input type="text" placeholder='Amount' className='pMedium'  />
+                <input type="text" placeholder='Amount' className='pMedium' />
             </div>
 
-            <Button color='lightGreen' btnType='Add Amount' />
-            <Button color='white' btnType='Reset' />
+            <button className='lightGreenBg defaultBtn'>Add Amount</button>
+            <button className='defaultBtn darkRed'>Reset</button>
+
+
         </div>
     )
 }
