@@ -1,0 +1,31 @@
+.addMoneyTypeContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-image: linear-gradient(white, rgba(255, 255, 255, 0.253));
+  padding: 2rem 3rem;
+  border-radius: 0.25rem;
+}
+
+.amtInputContainer {
+  display: flex;
+  max-width: 300px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  margin: 0.25rem;
+}
+.amtInputContainer input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  outline: none;
+  padding: 0.75rem;
+}
+.amtInputContainer .green {
+  color: var(--dark_green);
+}
+.amtInputContainer .red {
+  color: var(--dark_red);
+}

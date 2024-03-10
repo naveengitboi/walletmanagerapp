@@ -1,9 +1,9 @@
 import React from 'react'
 import '../componentStyles/Button.css'
 
-function Button() {
+function Button(props) {
     return (
-        <button className={`defaultBtn pLarge`}>Button</button>
+        <button className={`defaultBtn pLarge ${props.color}`}>{props.btnType}</button>
     )
 }
 

@@ -1,7 +1,7 @@
 .defaultBtn {
   border: none;
   background-color: white;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   padding: 0.75rem;
   color: var(--dark_gray);
 }

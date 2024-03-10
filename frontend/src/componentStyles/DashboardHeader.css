@@ -1,0 +1,22 @@
+.infoContainer {
+  padding: 1rem 2.5rem;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.934),
+    rgba(255, 255, 255, 0)
+  );
+
+}
+.moneyInfo {
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.moneyInfo .hLarge {
+  padding: 1.85rem 0;
+}
+
+.bottomHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
