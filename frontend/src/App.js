@@ -4,6 +4,8 @@ import Header from './components/Header';
 import SideNav from './components/SideNav';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
+import Register from './pages/Register';
+import Login from './pages/Login';
 function App() {
   return (
     <>
@@ -12,11 +14,13 @@ function App() {
         <div className="appContainer">
           <SideNav />
           <div className="routesContainer ">
-            <div className="insideRoutesContainer glassBg"> 
-            <Routes>
-              <Route path='/' element={<Dashboard/>} />
-              <Route path='/transactions' element={<Transactions/>} />
-            </Routes>
+            <div className="insideRoutesContainer glassBg">
+              <Routes>
+                <Route path='/' element={<Dashboard />} />
+                <Route path='/transactions' element={<Transactions />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/login' element={<Login />} />
+              </Routes>
             </div>
           </div>
         </div>

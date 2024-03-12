@@ -1,7 +1,7 @@
 import React from 'react'
 import '../componentStyles/Header.css'
 import { MdCampaign } from "react-icons/md";
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 function Header() {
     let location = useLocation()
     return (
@@ -15,7 +15,7 @@ function Header() {
 
                 <MdCampaign />
                 <div className="profileCircle">
-                    <img src="/profile.png" alt="profile image" />
+                    <Link to='/register'><img src="/profile.png" alt="profile image" /></Link>
                 </div>
             </div>
 

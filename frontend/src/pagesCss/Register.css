@@ -1,0 +1,40 @@
+.registerPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  flex-direction: column;
+  position: relative;
+}
+
+.bgSvg {
+  position: absolute;
+  left: -10%;
+  transform: rotate(60deg);
+}
+.bgSvg img {
+  width: 50%;
+}
+
+.registerPage form,
+.otherOptions {
+  display: flex;
+  flex-direction: column;
+  min-width: 25vw;
+}
+
+.checkBoxContainer {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+.centerTexts {
+  text-align: center;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.otherOptions button {
+  width: 100%;
+  margin: 0.5rem 0;
+}

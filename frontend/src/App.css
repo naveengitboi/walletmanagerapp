@@ -20,7 +20,7 @@
   --p_20px: 1.25rem;
   --p_16px: 1rem;
   --p_14px: 0.879rem;
-  --tiny_text: 0.75rem;
+  --tiny_text: 0.65rem;
 
   /* colors */
   --light_gray: #efefef;
@@ -35,7 +35,7 @@
 
   /* svg */
   --svg_size: 1.5rem;
-  --svg_color: black;
+  --svg_color: var(--dark_gray);
 }
 
 .hLarge {
@@ -73,7 +73,7 @@
 .tinyText {
   font-family: var(--monte);
   font-size: var(--tiny_text);
-  font-weight: 600;
+  font-weight: 500;
 }
 .darkGreen {
   color: var(--dark_green);
@@ -84,6 +84,7 @@
 .darkGray {
   color: var(--dark_gray);
 }
+
 .glassBg {
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.39),
@@ -105,11 +106,13 @@
   cursor: pointer;
   font-family: var(--sora);
   font-weight: 600;
+  font-size: var(--p_16px);
 }
 .buttonWithIcon {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.85rem 1.25rem;
 }
 .buttonWithIcon svg {
   font-size: var(--svg_size);
@@ -117,6 +120,10 @@
   margin: 0 0.85rem;
 }
 .lightGreenBg {
+  background-color: var(--light_green);
+  color: var(--white_color);
+}
+.darkGreenBg {
   background-color: var(--dark_green);
   color: var(--white_color);
 }
@@ -128,7 +135,36 @@
   background-color: var(--dark_gray);
   color: var(--white_color);
 }
+.hideBtn {
+  cursor: not-allowed;
+  background-color: var(--light_gray);
+}
+.showBtn {
+  cursor: pointer;
+}
 
+/*input elements*/
+.inputEle {
+  padding: 0.95rem 1rem;
+  border: none;
+  outline: none;
+  font-size: var(--p_16px);
+  font-family: var(--sora);
+  font-weight: 500;
+  background-color: var(--white_color);
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+a {
+  text-decoration: none;
+}
+.svgWhite svg {
+  color: var(--white_color);
+}
+.svgDark svg {
+  color: var(--dark_gray);
+}
 /* body */
 body {
   color: var(--dark_gray);
@@ -142,16 +178,19 @@ body {
   display: flex;
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .routesContainer {
   padding: 10vh 2rem;
-  overflow-y: auto;
+  min-height: 90vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .insideRoutesContainer {
   padding: 2rem;
   border-radius: 0.85rem;
   min-width: 90vw;
-  min-height: 80vh;
+  min-height: 100%;
 }
