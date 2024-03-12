@@ -16,7 +16,7 @@ function SideNav() {
         
       </ul>
       <ul className="bottomLinks">
-        <li><NavLink to='/settings'><AiOutlineSliders /></NavLink></li>
+        <li><NavLink to='/profile'><AiOutlineSliders /></NavLink></li>
         <li><NavLink to='/logout'><TbLogout2 /></NavLink></li>
       </ul>
     </div>

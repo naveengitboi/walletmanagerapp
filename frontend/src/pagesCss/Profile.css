@@ -1,0 +1,51 @@
+.profilePage {
+  display: flex;
+}
+.profileSection {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profileEdits {
+  background-color: var(--white_color);
+  border-radius: 0.85rem;
+  font-weight: 600;
+  width: 100%;
+}
+.editSection {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 0px rgb(201, 201, 201);
+  padding: 1rem 1.85rem;
+}
+.editSection .editIcon svg {
+  font-size: var(--svg_size);
+  cursor: pointer;
+}
+.userInfo {
+  padding: 0.85rem 0;
+}
+.userValues {
+  padding: 0.5rem 1.85rem;
+}
+.userValues .tinyText {
+  text-transform: uppercase;
+  color: var(--light_gray);
+}
+.userValueInput {
+  padding: 0;
+}
+
+.profileSection .defaultBtn {
+  color: var(--light_gray);
+  width: 100%;
+  margin: 1.8rem 0 0;
+  padding: 1.25rem;
+}
+
+.settingsSection {
+  flex-grow: 1;
+}
