@@ -8,10 +8,10 @@ function Settings() {
     <div className='page settingsContainer'>
       <div className="updateBtnsContainer settingsOptionsTop">
         <div className="updateBtn">
-          <Link><button className='defaultBtn buttonWithIcon'>Passwords <MdPassword /> </button></Link>
+          <Link to='/profile/passwords'><button className='defaultBtn buttonWithIcon'>Passwords <MdPassword /> </button></Link>
         </div>
         <div className="updateBtn">
-          <Link><button className='defaultBtn buttonWithIcon'>2-Fa Authentication <MdFingerprint /> </button></Link>
+          <Link to='/profile/2fa'><button className='defaultBtn buttonWithIcon'>2-Fa Authentication <MdFingerprint /> </button></Link>
         </div>
         <div className="updateBtn">
           <Link><button className='defaultBtn buttonWithIcon'>Accounts <MdAccountTree /> </button></Link>
@@ -26,7 +26,7 @@ function Settings() {
           <Link><button className='defaultBtn buttonWithIcon'>Contribute Code <SiCodeigniter /> </button></Link>
         </div>
         <div className="updateBtn">
-          <Link><button className='defaultBtn buttonWithIcon'>Delete Account <MdDelete /> </button></Link>
+          <Link><button className='defaultBtn buttonWithIcon lightRedBg svgWhite'>Delete Account <MdDelete /> </button></Link>
         </div>
       </div>
     </div>

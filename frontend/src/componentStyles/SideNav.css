@@ -22,9 +22,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0.65rem;
   margin: 1.5rem 0;
-  transition: all 0.85s ease;
+  transition: all 0.5s ease;
 }
 .sideNavbar a.active {
   background-color: var(--white_color);

@@ -132,6 +132,10 @@
   background-color: var(--dark_red);
   color: var(--white_color);
 }
+.lightRedBg {
+  background-color: var(--light_red);
+  color: var(--white_color);
+}
 .darkGrayBg {
   background-color: var(--dark_gray);
   color: var(--white_color);

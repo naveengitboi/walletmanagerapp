@@ -7,6 +7,8 @@ import Transactions from './pages/Transactions';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import PasswordUpdate from './settings/settingsApps/PasswordUpdate';
+import TwoFa from './settings/settingsApps/TwoFa';
 function App() {
   return (
     <>
@@ -22,6 +24,8 @@ function App() {
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/profile' element={<Profile />} />
+                <Route path='/profile/passwords' element={<PasswordUpdate />} />
+                <Route path='/profile/2fa' element={<TwoFa />} />
               </Routes>
             </div>
           </div>
