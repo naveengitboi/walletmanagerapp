@@ -16,7 +16,21 @@ function Transactions() {
                     <button className='defaultBtn buttonWithIcon'>Download<AiOutlineCloudDownload /></button>
                 </div>
             </div>
-            <TransactionItem />
+            <div className="itemsCollectionSection">
+                <div className="tsItemsHeader">
+                    <p className='pSmall'>Profile</p>
+                    <p className='pSmall'>from</p>
+                    <p className='pSmall'>type</p>
+                    <p className='pSmall'>Date</p>
+                    <p className='pSmall'>Through</p>
+                    <p className='pSmall'>Amount</p>
+                    <p className='pSmall'>Action</p>
+                </div>
+                <TransactionItem />
+                <TransactionItem />
+                <TransactionItem />
+                <TransactionItem />
+            </div>
         </div>
     )
 }

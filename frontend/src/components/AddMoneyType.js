@@ -1,7 +1,7 @@
 import React from 'react'
 import '../componentStyles/AddMoneyType.css'
 
-function AddMoneyType() {
+function AddMoneyType(props) {
     return (
         <div className='addMoneyTypeContainer glassBg'>
             <div className="amtInputContainer glassBg">
@@ -17,19 +17,13 @@ function AddMoneyType() {
                 <input type="text" placeholder='Amount' className='pMedium' />
             </div>
             <div className="amtInputContainer glassBg">
-                <p className='pSmall'>
-                    $
-                </p>
-                <input type="text" placeholder='Amount' className='pMedium' />
+                <input type="text" placeholder={props.type.type} className='pMedium' />
             </div>
             <div className="amtInputContainer glassBg">
-                <p className='pSmall'>
-                    $
-                </p>
-                <input type="text" placeholder='Amount' className='pMedium' />
+                <input type="text" placeholder='Description' className='pMedium' />
             </div>
 
-            <button className='lightGreenBg defaultBtn'>Add Amount</button>
+            <button className={props.type.btnColorCode ? 'lightGreenBg defaultBtn' : 'lightGreenBg defaultBtn lightRedBg'}>{props.type.btn}</button>
             <button className='defaultBtn darkRed'>Reset</button>
 
 

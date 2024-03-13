@@ -15,6 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0.5rem 0;
 }
 .tsItem .userProfile {
   width: 45px;
@@ -37,4 +38,20 @@
   font-family: var(--sora);
   color: var(--white_color);
   cursor: pointer;
+}
+
+/* historyItem */
+.recentHistoryContainer {
+  padding: 0.5rem 0.85rem;
+}
+.recentHistoryContainer .tinyText {
+  color: var(--light_gray);
+  padding: 0.5rem;
+}
+.historyItem .tsItem {
+  background-color: transparent;
+  background: none;
+}
+.historyItem .tsItem .pSmall {
+  font-weight: 600;
 }

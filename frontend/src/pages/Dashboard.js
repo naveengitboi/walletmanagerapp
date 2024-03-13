@@ -1,9 +1,10 @@
 import React from 'react'
 import DashboardHeader from '../components/DashboardHeader'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import '../pagesCss/Dashboard.css'
 import AddMoneyType from '../components/AddMoneyType'
 import Analytics from '../components/Analytics'
+import RecentHistory from '../components/RecentHistory'
 
 function Dashboard() {
   return (
@@ -19,22 +20,22 @@ function Dashboard() {
         <div className="dbfLeft">
           <div className="addMoneyContainer">
             <div className="amcNavbar">
-              <Link to='/transaction/received'>Received</Link>
-              <Link to='/transaction/paid'>Paid</Link>
-              <Link to='/transaction/paid'>Debt</Link>
+              <Link to='/received'>Received</Link>
+              <Link to='/paid'>Paid</Link>
+              <Link to='/paid'>Debt</Link>
             </div>
-            <AddMoneyType />
+            <Outlet />
 
           </div>
 
           <div className="transactionsHistoryContainer">
-
+            <RecentHistory />
           </div>
         </div>
 
 
         <div className='analyticsContainer'>
-          <Analytics/>
+          <Analytics />
         </div>
       </div>
     </div>

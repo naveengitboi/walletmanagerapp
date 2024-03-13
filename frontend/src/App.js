@@ -9,7 +9,19 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import PasswordUpdate from './settings/settingsApps/PasswordUpdate';
 import TwoFa from './settings/settingsApps/TwoFa';
+import Analytics from './pages/Analytics';
+import AddMoneyType from './components/AddMoneyType';
 function App() {
+    const receivedType = {
+      type:'from',
+      btn:'Credit Amount',
+      btnColorCode:true
+    }
+  const paidType = {
+    type: 'to',
+    btn: 'Debit Amount',
+    btnColorCode:false
+  }
   return (
     <>
       <div className="App">
@@ -19,13 +31,18 @@ function App() {
           <div className="routesContainer ">
             <div className="insideRoutesContainer glassBg">
               <Routes>
-                <Route path='/' element={<Dashboard />} />
+                <Route path='/' element={<Dashboard />} >
+                  <Route index element={<AddMoneyType type={receivedType} />}/>
+                  <Route path='received' element={<AddMoneyType type={receivedType} />}/>
+                  <Route path='paid' element={<AddMoneyType type={paidType} />}/>
+                </Route>
                 <Route path='/transactions' element={<Transactions />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/profile/passwords' element={<PasswordUpdate />} />
                 <Route path='/profile/2fa' element={<TwoFa />} />
+                <Route path='/analytics' element={<Analytics />} />
               </Routes>
             </div>
           </div>
