@@ -1,16 +1,35 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import mongoose from 'mongoose'
+import userRouter from './routes/user.route.js'
 
+
+
+//middlewares
+const app = express()
+app.use(express.json())
 dotenv.config()
-const app = express() 
-
-console.log(process.env.PORT)
 
 
+//db connection
+const dbConnect = async () => {
+    mongoose.connect(process.env.MONGO_URL)
+    console.log('db Connected')
+}
+
+
+//routes
 app.get('/', (req,res) => {
-    res.send('Hello world asdfasd')
+    res.send('connected')
 })
+app.use('/api', userRouter)
 
-app.listen(process.env.PORT, () => {
-    console.log('Server running on port ' + process.env.PORT)
+
+
+
+
+//listen 
+app.listen(process.env.PORT || 8000, () => {
+    console.log('port running at', process.env.PORT )
+    dbConnect()
 })
