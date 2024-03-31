@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken'
 const registerUser = async (req, res) => {
     try {
         const userData = req.body;
+        console.log(req.body)
         const orgPwd = userData.password
         const salts = 10;
         const hashedPwd = await bcrypt.hash(orgPwd, salts)
@@ -19,7 +20,9 @@ const registerUser = async (req, res) => {
         }
 
         const newUser = new userModel(dataModified)
-        await newUser.save()
+        const addedUser = await newUser.save()
+        console.log(addedUser._id.toString())
+        const token = jwt.sign({ userId: addedUser._id.toString(), userName: dbData.user_name }, process.env.SECRET_KEY)
         res.send('user added successfully')
     } catch (error) {
         res.send(error).status(400)
@@ -35,7 +38,7 @@ const loginUser = async (req, res) => {
             password: req.body.password
         };
         const dbData = await userModel.findOne({ user_name: userData.user_name })
-        
+
         if (dbData) {
             const isMatched = await bcrypt.compare(userData.password, dbData.password)
             if (isMatched) {

@@ -1,21 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdEast } from "react-icons/md";
 import '../pagesCss/Register.css'
 import api from '../api/axios.js';
-import axios from 'axios';
+import { useDispatch } from 'react-redux'
+import { addUserData } from '../Redux/UserSlice.js';
 
 function Register() {
-
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const handleApi = async (data) => {
-        console.log({ data })
-        axios.post('http://localhost:3001/api/register', { data }, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }}
-        ).then((res) => console.log(res)).catch((err) => console.log(err))
+        const res = await api.post('/register', data)
+        if (res.statusText == "OK") {
+            dispatch(addUserData())
+                navigate('/')
+        } else {
+            alert('Cannot add user')
+        }
+
     }
 
     const disableRef = useRef()
