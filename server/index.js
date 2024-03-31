@@ -20,12 +20,8 @@ const dbConnect = async () => {
 
 
 //routes
-app.get('/', (req, res) => {
-    res.send('connected')
-})
+
 app.use('/api', userRouter)
-
-
 
 
 

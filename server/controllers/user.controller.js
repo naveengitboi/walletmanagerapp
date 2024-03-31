@@ -6,7 +6,6 @@ import jwt from 'jsonwebtoken'
 //sign in
 const registerUser = async (req, res) => {
     try {
-
         const userData = req.body;
         const orgPwd = userData.password
         const salts = 10;
@@ -23,7 +22,7 @@ const registerUser = async (req, res) => {
         await newUser.save()
         res.send('user added successfully')
     } catch (error) {
-        res.send(error).status(200)
+        res.send(error).status(400)
     }
 }
 
@@ -45,14 +44,14 @@ const loginUser = async (req, res) => {
                 res.send('Loginn Sucess').status(200)
             }
             else {
-                res.send('passwords didnt match').send(400)
+                res.send('passwords didnt match').status(400)
             }
         } else {
             res.send('user doesnt exist yet')
         }
 
     } catch (error) {
-        res.send(error).status(200)
+        res.send(error).status(400)
     }
 }
 
