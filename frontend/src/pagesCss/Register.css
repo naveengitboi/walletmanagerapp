@@ -38,3 +38,9 @@
   width: 100%;
   margin: 0.5rem 0;
 }
+
+.inactiveBtn {
+  cursor: not-allowed;
+  background-color: #b4f2e6;
+  color: rgb(176, 176, 176);
+}
