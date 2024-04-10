@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import userRouter from './routes/user.route.js'
+import transactionRouter from './routes/transaction.route.js'
 import cors from 'cors'
 
 
@@ -22,7 +23,7 @@ const dbConnect = async () => {
 //routes
 
 app.use('/api', userRouter)
-
+app.use('/api', transactionRouter)
 
 
 //listen 
