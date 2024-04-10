@@ -27,11 +27,13 @@ nav {
   color: var(--svg_color);
   margin: 0 2rem;
 }
-.profileCircle {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-}
+
 .profileCircle img {
   width: 100%;
+}
+
+.profileRegister
+{
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.15rem;
 }

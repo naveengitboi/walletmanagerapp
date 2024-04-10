@@ -13,8 +13,8 @@ function Register() {
     const handleApi = async (data) => {
         const res = await api.post('/register', data)
         if (res.statusText == "OK") {
-            dispatch(addUserData())
-                navigate('/')
+            dispatch(addUserData(data))
+            navigate('/')
         } else {
             alert('Cannot add user')
         }

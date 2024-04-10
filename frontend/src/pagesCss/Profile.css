@@ -8,13 +8,26 @@
   justify-content: center;
   flex-direction: column;
 }
-
+.profilePage .gradientProfile
+{
+  --size: 180px;
+  width: var(--size);
+  height: var(--size);
+  margin-bottom: 1rem;
+  transition: all 0.5s ease;
+}
+.profilePage .gradientProfile:hover
+{
+  border-radius: 5%;
+}
 .profileEdits {
   background-color: var(--white_color);
   border-radius: 0.85rem;
   font-weight: 600;
   width: 100%;
 }
+
+
 .editSection {
   display: flex;
   justify-content: space-between;
@@ -29,14 +42,16 @@
   padding: 0.85rem 0;
 }
 .userValues {
-  padding: 0.5rem 1.85rem;
+  padding: 0rem 1.85rem;
 }
 .userValues .tinyText {
   text-transform: uppercase;
   color: var(--light_gray);
 }
 .userValueInput {
-  padding: 0;
+  width: 100%;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 0.15rem;
 }
 
 .profileSection .defaultBtn {

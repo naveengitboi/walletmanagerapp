@@ -1,26 +1,35 @@
-import React from 'react'
-import '../componentStyles/Header.css'
+import React from "react";
+import "../componentStyles/Header.css";
 import { MdCampaign } from "react-icons/md";
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 function Header() {
-    let location = useLocation()
-    return (
-        <nav>
-            <div className="logo">
-                <h1 className='hMedium'>WM</h1>
-                <p className='pMedium'>{location.pathname.slice(1)}</p>
-            </div>
+  const userData = useSelector((state) => state.user.currentUser);
+  console.log(userData);
 
-            <div className="infoNavContainer">
+  let location = useLocation();
+  return (
+    <nav>
+      <div className="logo">
+              <Link to='/'><h1 className="hMedium">WM</h1></Link>
+        <p className="pMedium">{location.pathname.slice(1)}</p>
+      </div>
 
-                <MdCampaign />
-                <div className="profileCircle">
-                    <Link to='/register'><img src="/profile.png" alt="profile image" /></Link>
-                </div>
-            </div>
-
-        </nav>
-    )
+      <div className="infoNavContainer">
+        <MdCampaign />
+        <div className="profileCircle">
+          {!Boolean(userData.username) ? (
+                      <Link to='/register' className="profileRegister lightGreenBg">Register</Link>
+          ) : (
+            <Link to='/profile'>
+                <div className="gradientProfile"></div>
+            </Link>
+          )}
+        </div>
+      </div>
+    </nav>
+  );
 }
 
-export default Header
+export default Header;
