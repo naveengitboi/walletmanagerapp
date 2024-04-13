@@ -1,0 +1,16 @@
+.chartContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chartContainer div {
+  height: 50vh;
+  width: 50%;
+  background-color: white;
+  margin: 0 0.85rem;
+}
+
+.historySection {
+  padding: 1rem 0;
+  margin: 0.85rem 0;
+}

@@ -1,0 +1,39 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  background-color: #ffffffea;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+}
+
+.logo .pMedium {
+  margin-left: 3rem;
+  text-transform:capitalize;
+}
+
+.infoNavContainer,
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.infoNavContainer svg {
+  font-size: var(--svg_size);
+  color: var(--svg_color);
+  margin: 0 2rem;
+}
+
+.profileCircle img {
+  width: 100%;
+}
+
+.profileRegister
+{
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.15rem;
+}

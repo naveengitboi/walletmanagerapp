@@ -1,0 +1,57 @@
+.tsItemsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0.85rem;
+}
+.tsItemsHeader .pSmall {
+  text-align: center;
+  color: var(--light_gray);
+  font-weight: 500;
+}
+.tsItem {
+  background: white;
+  padding: 0.5rem 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.tsItem .userProfile {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.tsItem .userProfile img {
+  width: 100%;
+  object-fit: cover;
+}
+.tsItem .pMedium {
+  font-family: var(--sora);
+  font-weight: 600;
+}
+
+.tsItem .actionBtn {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--light_red);
+  font-weight: 600;
+  font-family: var(--sora);
+  color: var(--white_color);
+  cursor: pointer;
+}
+
+/* historyItem */
+.recentHistoryContainer {
+  padding: 0.5rem 0.85rem;
+}
+.recentHistoryContainer .tinyText {
+  color: var(--light_gray);
+  padding: 0.5rem;
+}
+.historyItem .tsItem {
+  background-color: transparent;
+  background: none;
+}
+.historyItem .tsItem .pSmall {
+  font-weight: 600;
+}

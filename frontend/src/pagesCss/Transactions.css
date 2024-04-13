@@ -1,0 +1,22 @@
+.tsPageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.25rem 0;
+}
+
+.tsPageHeader .totalValues {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 0.25rem;
+}
+.tsPageHeader .totalValues .pLarge {
+  margin: 0.2rem 0.9rem;
+  padding: 0.85rem;
+  transition: all 0.5s ease;
+}
+
+.totalValues .pLarge:hover {
+  background-color: rgb(238, 238, 238);
+}

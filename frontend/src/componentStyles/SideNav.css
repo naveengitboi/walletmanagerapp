@@ -1,0 +1,50 @@
+.sideNavbar {
+  width: 80px;
+  height: 100vh;
+  background-color: var(--white_color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dashboardLinks {
+  list-style: none;
+}
+.sideNavbar ul li {
+  list-style-type: none;
+  list-style: none;
+}
+
+.sideNavbar a {
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.65rem;
+  margin: 1.5rem 0;
+  transition: all 0.5s ease;
+}
+.sideNavbar a.active {
+  background-color: var(--white_color);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgb(140, 140, 140);
+  position: relative;
+}
+
+/* .sideNavbar a.active::after {
+  content: "hello";
+  position: absolute;
+  font-size: 0.85rem;
+  background-color: var(--dark_gray);
+  padding: 0.15rem 0.85rem;
+  border-radius: 0.25rem;
+  color: var(--white_color);
+  top: -20px;
+  left: -20%;
+} */
+.sideNavbar a svg {
+  font-size: var(--svg_size);
+  color: var(--svg_color);
+}
