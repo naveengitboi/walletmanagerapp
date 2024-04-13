@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 
 
 const transactionSchema =new mongoose.Schema({
+    userId: String,
     fromImg: String,
     amount: {
         type: Number,

@@ -179,28 +179,36 @@ body {
   width: 100vw;
   scroll-behavior: smooth;
 }
-html::-webkit-scrollbar
+html::-webkit-scrollbar, body::-webkit-scrollbar, .appContainer::-webkit-scrollbar
 {
-  width: 5px;
-  border-radius: 1rem;
-  background: red;
-
+  display: none;
 }
+
 .appContainer {
   display: flex;
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
-
-
 .routesContainer {
   padding: 10vh 2rem;
   min-height: 90vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
+.routesContainer::-webkit-scrollbar
+{
+  width: 5px;
+  background-color: white;
+  border-radius: 1rem;
+}
+.routesContainer::-webkit-scrollbar-thumb
+{
+  background-color: var(--light_green);
+  width: 100%;
+    border-radius: 1rem;
 
+}
 .insideRoutesContainer {
   padding: 2rem;
   border-radius: 0.85rem;
