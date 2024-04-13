@@ -177,14 +177,22 @@ body {
   background-size: cover;
   overflow-x: hidden;
   width: 100vw;
+  scroll-behavior: smooth;
 }
+html::-webkit-scrollbar
+{
+  width: 5px;
+  border-radius: 1rem;
+  background: red;
 
+}
 .appContainer {
   display: flex;
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 
 .routesContainer {
   padding: 10vh 2rem;

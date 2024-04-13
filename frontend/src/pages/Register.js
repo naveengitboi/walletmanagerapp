@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdEast } from "react-icons/md";
 import '../pagesCss/Register.css'
-import api from '../api/axios.js';
+// import api from '../api/axios.js';
 import { useDispatch } from 'react-redux'
 import { addUserData } from '../Redux/UserSlice.js';
 
@@ -11,7 +11,8 @@ function Register() {
     const navigate = useNavigate()
 
     const handleApi = async (data) => {
-        const res = await api.post('/register', data)
+        // const res = await api.post('/register', data)
+        const res = 'not ok'
         if (res.statusText == "OK") {
             dispatch(addUserData(data))
             navigate('/')

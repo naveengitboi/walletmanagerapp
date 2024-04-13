@@ -18,7 +18,7 @@ function Profile() {
     const updateUserDb = () => {
         setGiveEditAccess(false)
         //update user db 
-        // console.log(userDetails)
+    //    console.log(userDetails)
     }
 
     return (

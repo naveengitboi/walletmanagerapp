@@ -11,7 +11,10 @@ import PasswordUpdate from './settings/settingsApps/PasswordUpdate';
 import TwoFa from './settings/settingsApps/TwoFa';
 import Analytics from './pages/Analytics';
 import AddMoneyType from './components/AddMoneyType';
+
+
 function App() {
+
     const receivedType = {
       type:'from',
       btn:'Credit Amount',

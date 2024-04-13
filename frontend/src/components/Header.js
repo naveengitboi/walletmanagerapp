@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 function Header() {
   const userData = useSelector((state) => state.user.currentUser);
-  console.log(userData);
+  // console.log(userData);
 
   let location = useLocation();
   return (
