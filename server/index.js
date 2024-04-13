@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import userRouter from './routes/user.route.js'
 import transactionRouter from './routes/transaction.route.js'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 
 //middlewares
@@ -11,7 +12,7 @@ const app = express()
 app.use(express.json())
 dotenv.config()
 app.use(cors())
-
+app.use(cookieParser())
 
 //db connection
 const dbConnect = async () => {

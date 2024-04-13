@@ -25,7 +25,16 @@ const userSchema = new mongoose.Schema({
     phone:{
         type: Number,
         required: false
-    }
+    },
+    twoFa: {
+        type: String,
+        required:false,
+    },
+    accountNumbers : [
+        {
+            type:String
+        }
+    ]
     
 })
 

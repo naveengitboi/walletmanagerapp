@@ -1,7 +1,7 @@
 import userModel from '../models/user.model.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-
+import { generateToken, verifyToken } from '../middlewares/auth.js'
 
 //sign in
 const registerUser = async (req, res) => {
@@ -20,8 +20,7 @@ const registerUser = async (req, res) => {
 
         const newUser = new userModel(dataModified)
         const addedUser = await newUser.save()
-        const token = jwt.sign({ userId: addedUser._id.toString(), userName: dbData.user_name }, process.env.SECRET_KEY)
-        console.log(token)
+        generateToken(res, {userId : addedUser._id});
         res.send('user added successfully')
     } catch (error) {
         res.send(error).status(400)
@@ -41,8 +40,7 @@ const loginUser = async (req, res) => {
         if (dbData) {
             const isMatched = await bcrypt.compare(userData.password, dbData.password)
             if (isMatched) {
-                const token = jwt.sign({ userId: dbData._id, userName: dbData.user_name }, process.env.SECRET_KEY)
-                console.log(token)
+                generateToken(res,{ userId: dbData._id})
                 res.send('Loginn Sucess').status(200)
             }
             else {
@@ -59,12 +57,12 @@ const loginUser = async (req, res) => {
 
 
 //getAll users
-const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, verifyToken, res) => {
     try {
-        const users = await userModel.find()
-        res.send(users).status(200)
+        const users = await userModel.find() 
+        console.log(users)
     } catch (error) {
-        res.send(error)
+        console.log(error)
     }
 }
 
