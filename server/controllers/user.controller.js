@@ -1,7 +1,6 @@
 import userModel from '../models/user.model.js'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
-import { generateToken, verifyToken } from '../middlewares/auth.js'
+import { generateToken } from '../middlewares/auth.js'
 
 //sign in
 const registerUser = async (req, res) => {
@@ -57,10 +56,10 @@ const loginUser = async (req, res) => {
 
 
 //getAll users
-const getAllUsers = async (req, verifyToken, res) => {
+const getAllUsers = async (req, res) => {
     try {
-        const users = await userModel.find() 
-        console.log(users)
+        const users = await userModel.find();
+        res.send(users);
     } catch (error) {
         console.log(error)
     }

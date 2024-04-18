@@ -24,6 +24,7 @@
   --tiny_text: 0.65rem;
 
   /* colors */
+  
   --light_gray: #efefef;
   --white_color: white;
   --blue_color: #7091f5;
@@ -33,6 +34,9 @@
   --dark_gray: #3b3b3b;
   --dark_green: #00725a;
   --dark_red: #c90000;
+  --wheat_active: rgb(255, 243, 220);
+  --wheat_inactive: rgb(255, 251, 243);
+  --lightest_white: rgb(225, 216, 216);
 
   /* svg */
   --svg_size: 1.5rem;
@@ -163,6 +167,7 @@
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 .svgWhite svg {
   color: var(--white_color);
