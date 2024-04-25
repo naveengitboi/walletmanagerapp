@@ -31,9 +31,10 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try {
         const userData = {
-            user_name: req.body.userName,
+            user_name: req.body.username,
             password: req.body.password
         };
+   
         const dbData = await userModel.findOne({ user_name: userData.user_name })
 
         if (dbData) {
@@ -46,7 +47,8 @@ const loginUser = async (req, res) => {
                 res.send('passwords didnt match').status(400)
             }
         } else {
-            res.send('user doesnt exist yet')
+        
+            res.status(400).json({msg: 'Something awful'})
         }
 
     } catch (error) {
