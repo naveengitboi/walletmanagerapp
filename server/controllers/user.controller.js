@@ -1,7 +1,6 @@
 import userModel from '../models/user.model.js'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
-import { generateToken, verifyToken } from '../middlewares/auth.js'
+import { generateToken } from '../middlewares/auth.js'
 
 //sign in
 const registerUser = async (req, res) => {
@@ -32,9 +31,10 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try {
         const userData = {
-            user_name: req.body.userName,
+            user_name: req.body.username,
             password: req.body.password
         };
+   
         const dbData = await userModel.findOne({ user_name: userData.user_name })
 
         if (dbData) {
@@ -47,7 +47,8 @@ const loginUser = async (req, res) => {
                 res.send('passwords didnt match').status(400)
             }
         } else {
-            res.send('user doesnt exist yet')
+        
+            res.status(400).json({msg: 'Something awful'})
         }
 
     } catch (error) {
@@ -57,10 +58,10 @@ const loginUser = async (req, res) => {
 
 
 //getAll users
-const getAllUsers = async (req, verifyToken, res) => {
+const getAllUsers = async (req, res) => {
     try {
-        const users = await userModel.find() 
-        console.log(users)
+        const users = await userModel.find();
+        res.send(users);
     } catch (error) {
         console.log(error)
     }

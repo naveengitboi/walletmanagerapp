@@ -13,7 +13,7 @@ nav {
 
 .logo .pMedium {
   margin-left: 3rem;
-  text-transform:capitalize;
+  text-transform: capitalize;
 }
 
 .infoNavContainer,
@@ -22,18 +22,73 @@ nav {
   align-items: center;
   justify-content: center;
 }
-.infoNavContainer svg {
+.notifications {
+  padding: 0 0.85rem;
+  cursor: pointer;
+  margin: 0 0.15rem;
+  position: relative;
+}
+.notifications svg {
   font-size: var(--svg_size);
   color: var(--svg_color);
-  margin: 0 2rem;
+}
+
+.floatingModel {
+  position: absolute;
+}
+.messageModelContainer {
+  border: 1px solid var(--lightest_white);
+  background-color: var(--white_color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  min-width: 350px;
+  right: 0;
+}
+.messagesContainerUl {
+  list-style-type: none;
+  list-style: none;
+}
+.messageLi {
+  background-color: var(--wheat_active);
+  padding: 0.25rem 0.85rem;
+  border-radius: 0.15rem;
+  margin: 0.35rem 0;
+}
+.meesageLiInactive {
+  background-color: var(--whaet_inactive);
+}
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.messageHeader .tinyText {
+  font-weight: 800;
+  padding: 0;
+}
+.messageHeader .deleteSvg {
+  display: flex;
+  display: flex;
+  align-items: center;
+}
+.messageHeader .deleteSvg svg {
+  transition: all 0.15s ease;
+  font-size: var(--p_20px);
+}
+.messageHeader .deleteSvg svg:hover {
+  color: var(--dark_red);
+}
+
+.messageLi .bodyText {
+  margin: 0.15rem 0;
+}
+.messageLi .bodyText a {
+  text-decoration: underline;
 }
 
 .profileCircle img {
   width: 100%;
 }
-
-.profileRegister
-{
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.15rem;
+.profileCircle .defaultBtn {
+  padding: 0.55rem 1.35rem;
 }

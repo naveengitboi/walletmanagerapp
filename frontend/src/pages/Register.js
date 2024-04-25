@@ -2,22 +2,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdEast } from "react-icons/md";
 import '../pagesCss/Register.css'
-// import api from '../api/axios.js';
-import { useDispatch } from 'react-redux'
-import { addUserData } from '../Redux/UserSlice.js';
+import api from '../api/axios.js';
 
 function Register() {
-    const dispatch = useDispatch();
+  
     const navigate = useNavigate()
 
     const handleApi = async (data) => {
-        // const res = await api.post('/register', data)
-        const res = 'not ok'
+         const res = await api.post('/register', data)
         if (res.statusText == "OK") {
-            dispatch(addUserData(data))
+         
             navigate('/')
-        } else {
-            alert('Cannot add user')
+        }
+        else{
+            alert('Could not add user, try later')
         }
 
     }
@@ -57,8 +55,6 @@ function Register() {
 
         }
     }
-
-
 
     return (
         <div className='page registerPage'>

@@ -45,6 +45,7 @@ const deleteTrans = async (req,res) => {
 const updateTrans = async (req, res) => {
     try {
         
+         
         const data = req.body
         const updateDb = await TransactionModel.findOneAndUpdate({_id: req.params.id}, data)
 

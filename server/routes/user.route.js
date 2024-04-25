@@ -1,27 +1,34 @@
 import express from 'express'
 
 import { registerUser, loginUser, getAllUsers, updateUser, getOwnUser, deleteUser } from "../controllers/user.controller.js";
+import { verifyToken } from '../middlewares/auth.js';
 
 
 
 const router = express.Router()
 
 //get users
-router.get('/usersdata', getAllUsers)
+router.get('/usersdata' ,getAllUsers)
 //get owner
-router.get('/user/:id', getOwnUser)
+router.get('/user/:id',verifyToken,  getOwnUser)
 
 //updateUserDetails
-router.put('/update/:id', updateUser)
+router.put('/update/:id', verifyToken, updateUser)
 
 //delete user
-router.delete('/remove/:id', deleteUser)
+router.delete('/remove/:id', verifyToken, deleteUser)
 
 //register
 router.post('/register', registerUser)
 //login
 router.post('/login', loginUser)
 
+//lout out
+router.post('/logout', (req, res) => {
+    res.clearCookie("token");
+    res.send('Log out successful');
+
+})
 
 
 export default router
