@@ -21,6 +21,7 @@ const registerUser = async (req, res) => {
         const addedUser = await newUser.save()
         generateToken(res, {userId : addedUser._id});
         res.send('user added successfully')
+        
     } catch (error) {
         res.send(error).status(400)
     }
@@ -81,7 +82,7 @@ const getOwnUser = async (req, res) => {
 //update userdetails
 const updateUser = async (req, res) => {
     try {
-        const { id } = req.params
+        const id = req.userPayload
         const userData = req.body
         const updateData = {
             user_name: userData.userName,
@@ -100,9 +101,9 @@ const updateUser = async (req, res) => {
 //delete user account
 const deleteUser = async (req, res) => {
     try {
-        const { id } = req.params;
-
+        const id = req.userPayload
         await userModel.findByIdAndDelete(id)
+        
         res.send('user deleted')
     } catch (error) {
         res.send(error)

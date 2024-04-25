@@ -1,16 +1,16 @@
 import jwt from 'jsonwebtoken'
 
 const verifyToken = async (req, res, next) => {
-
+    
     const token = req.cookies.token;
     if(token){
        try {
            const isVerified = jwt.verify(token, process.env.SECRET_KEY);
            if (isVerified) {
-               next();
+            req.userPayload = isVerified.userId
+            next();
            }
-
-           console.log(isVerified)
+           
        } catch (error) {
         console.log(error)
        }
@@ -24,7 +24,11 @@ const verifyToken = async (req, res, next) => {
 
 const generateToken = async (res, payload) => {
     const token = jwt.sign(payload, process.env.SECRET_KEY)
-    res.cookie('token', token)
+    res.cookie('token', token, {
+        httpOnly: true, // The cookie only accessible by the web server
+        signed: true // Indicates if the cookie should be signed
+    })
+
 }
 
 

@@ -13,10 +13,10 @@ router.get('/usersdata' ,getAllUsers)
 router.get('/user/:id',verifyToken,  getOwnUser)
 
 //updateUserDetails
-router.put('/update/:id', verifyToken, updateUser)
+router.put('/update/', verifyToken, updateUser)
 
 //delete user
-router.delete('/remove/:id', verifyToken, deleteUser)
+router.delete('/remove', verifyToken, deleteUser)
 
 //register
 router.post('/register', registerUser)
@@ -27,7 +27,6 @@ router.post('/login', loginUser)
 router.post('/logout', (req, res) => {
     res.clearCookie("token");
     res.send('Log out successful');
-
 })
 
 

@@ -11,9 +11,11 @@ import cookieParser from 'cookie-parser'
 const app = express()
 app.use(express.json())
 dotenv.config()
+app.use(cookieParser('wmanagerapp'))
 app.use(cors())
-app.use(cookieParser())
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
+
+
 //db connection
 const dbConnect = async () => {
     mongoose.connect(process.env.MONGO_URL)
