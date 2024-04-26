@@ -11,7 +11,7 @@ import PasswordUpdate from './settings/settingsApps/PasswordUpdate';
 import TwoFa from './settings/settingsApps/TwoFa';
 import Analytics from './pages/Analytics';
 import AddMoneyType from './components/AddMoneyType';
-
+import Authenticated from './api/Authenticated';
 
 function App() {
 
@@ -39,7 +39,7 @@ function App() {
                   <Route path='received' element={<AddMoneyType type={receivedType} />}/>
                   <Route path='paid' element={<AddMoneyType type={paidType} />}/>
                 </Route>
-                <Route path='/transactions' element={<Transactions />} />
+                <Route path='/transactions' element={<Authenticated><Transactions /></Authenticated>} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/profile' element={<Profile />} />

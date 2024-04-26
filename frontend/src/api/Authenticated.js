@@ -1,8 +1,7 @@
-import React, { Children } from 'react'
 
-function Authenticated({Children}) {
-    
-  return Children
+
+function Authenticated({children}) {
+  return children
 }
 
 export default Authenticated
