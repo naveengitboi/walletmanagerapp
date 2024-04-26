@@ -32,6 +32,4 @@ const generateToken = async (res, payload) => {
 }
 
 
-
-
 export {verifyToken, generateToken}

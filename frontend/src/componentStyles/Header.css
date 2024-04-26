@@ -85,6 +85,10 @@ nav {
 .messageLi .bodyText a {
   text-decoration: underline;
 }
+.actionsButtonsHeader a
+{
+  margin:0 0.15rem ;
+}
 
 .profileCircle img {
   width: 100%;

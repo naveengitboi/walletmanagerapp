@@ -12,7 +12,12 @@ const app = express()
 app.use(express.json())
 dotenv.config()
 app.use(cookieParser('wmanagerapp'))
-app.use(cors())
+app.use(cors(
+    {
+        origin: "http://localhost:3000",
+        credentials: true,
+    }
+))
 // app.use(express.urlencoded({ extended: false }));
 
 

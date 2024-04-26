@@ -4,13 +4,14 @@ import { MdCampaign } from "react-icons/md";
 import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MessageModel from "./MessageModel";
+
+
 function Header() {
-  const userData = useSelector((state) => state.user.currentUser);
+  const currentUser = useSelector((state) => state.isAnonymous.userExist)
   const [toggle, setToggle] = useState(false);
   // console.log(userData);
   const toggleRef = useRef()
   let location = useLocation();
-
   useEffect(() => {
     const closeMessagehandler = (e) => {
       if (!toggleRef.current.contains(e.target) ){
@@ -43,10 +44,16 @@ function Header() {
       
         </div>
         <div className="profileCircle">
-          {!Boolean(userData.username) ? (
-            <Link to="/register" className="defaultBtn lightGreenBg">
+          {!currentUser ? (
+            <div className="actionsButtonsHeader">
+              <Link to="/register" className="defaultBtn lightGraybg">
               Register
             </Link>
+              <Link to="/login" className="defaultBtn lightGreenBg">
+                Login
+              </Link>
+            </div>
+            
           ) : (
             <Link to="/profile">
               <div className="gradientProfile"></div>

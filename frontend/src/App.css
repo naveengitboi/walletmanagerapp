@@ -144,6 +144,10 @@
   background-color: var(--dark_gray);
   color: var(--white_color);
 }
+.lightGrayBg {
+  background-color: var(--light_gray);
+  color: var(--white_color);
+}
 .hideBtn {
   cursor: not-allowed;
   background-color: var(--light_gray);

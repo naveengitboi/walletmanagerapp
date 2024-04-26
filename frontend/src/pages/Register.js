@@ -3,16 +3,21 @@ import { Link, useNavigate } from 'react-router-dom'
 import { MdEast } from "react-icons/md";
 import '../pagesCss/Register.css'
 import api from '../api/axios.js';
+import {useDispatch} from 'react-redux'
+import {addUserExist} from '../Redux/IsAnonymous'
 
 function Register() {
-  
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleApi = async (data) => {
-         const res = await api.post('/register', data)
+         const res = await api.post('/register', data, {
+             withCredentials: true,
+             credentials: 'include',
+         })
         if (res.statusText == "OK") {
-         
-            navigate('/')
+            dispatch(addUserExist())
+            navigate('/', {replace:true})
         }
         else{
             alert('Could not add user, try later')
