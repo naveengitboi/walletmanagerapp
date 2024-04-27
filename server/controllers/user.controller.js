@@ -71,7 +71,8 @@ const getAllUsers = async (req, res) => {
 //get one user
 const getOwnUser = async (req, res) => {
     try {
-        const { id } = req.params
+        const id = req.userPayload
+        // console.log(id)
         const user = await userModel.findById(id)
         res.send(user).status(200)
     } catch (error) {

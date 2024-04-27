@@ -10,10 +10,10 @@ const router = express.Router()
 //get users
 router.get('/usersdata' ,getAllUsers)
 //get owner
-router.get('/user/:id',verifyToken,  getOwnUser)
+router.get('/user',verifyToken,  getOwnUser)
 
 //updateUserDetails
-router.put('/update/', verifyToken, updateUser)
+router.put('/update', verifyToken, updateUser)
 
 //delete user
 router.delete('/remove', verifyToken, deleteUser)

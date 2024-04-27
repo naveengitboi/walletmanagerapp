@@ -20,6 +20,7 @@ const Guides = lazy(() => import('./GuidesPage/Guides'))
 const Beta = lazy(() => import('./pages/Beta'))
 
 function App() {
+  
   const receivedType = {
     type: "from",
     btn: "Credit Amount",

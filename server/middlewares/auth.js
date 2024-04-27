@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken'
 
 const verifyToken = async (req, res, next) => {
-    
-    const token = req.cookies.token;
+    const token = req.cookies.token || req.signedCookies.token;
+    // console.log(token)
     if(token){
        try {
            const isVerified = jwt.verify(token, process.env.SECRET_KEY);

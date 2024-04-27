@@ -1,13 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../pagesCss/Profile.css'
 import { MdEdit } from "react-icons/md";
 import Settings from './Settings';
-import {useSelector} from 'react-redux'
-function Profile() {
-    const currentUser = useSelector((state) => state.user.currentUser)
+import api from '../api/axios';
 
+
+function Profile() {
+    const currentUser = {
+        firstName: '',
+        lastName:'',
+        email: '',
+        phnum: ''
+    }
     const [userDetails, setuserDetails] = useState(currentUser)
     const [giveEditAccess, setGiveEditAccess] = useState(false)
+
+    useEffect(() => {
+        const getOwnerDetails = async () => {
+            const userData = await api.get('/user', {
+                withCredentials: true,
+                credentials: 'include',
+            })
+
+            const updatedUserKeysData = {
+                userName: userData.data.user_name,
+                firstName: userData.data.first_name,
+                lastName: userData.data.last_name,
+                email: userData.data.email,
+            }
+
+            setuserDetails(updatedUserKeysData)
+            
+        }
+        getOwnerDetails()
+
+    }, [])
 
     const changeUserData = (e) => {
         const value = e.target.value;
@@ -17,8 +44,6 @@ function Profile() {
 
     const updateUserDb = () => {
         setGiveEditAccess(false)
-        //update user db 
-    //    console.log(userDetails)
     }
 
     return (
