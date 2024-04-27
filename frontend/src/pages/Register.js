@@ -3,16 +3,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import { MdEast } from "react-icons/md";
 import '../pagesCss/Register.css'
 import api from '../api/axios.js';
+import {useDispatch} from 'react-redux'
+import {addUserExist} from '../Redux/IsAnonymous'
+import Loader from '../components/Loader.js';
 
 function Register() {
-  
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleApi = async (data) => {
-         const res = await api.post('/register', data)
+         const res = await api.post('/register', data, {
+             withCredentials: true,
+             credentials: 'include',
+         })
         if (res.statusText == "OK") {
-         
-            navigate('/')
+            dispatch(addUserExist())
+            navigate('/', {replace:true})
         }
         else{
             alert('Could not add user, try later')
@@ -58,9 +64,9 @@ function Register() {
 
     return (
         <div className='page registerPage'>
+
             <div className="bgSvg">
                 <img src="/assets/bg/bgillu.svg" alt="" />
-
             </div>
             <form action="">
                 <input type="text" placeholder='First Name' className='inputEle' name='firstName' onChange={handleChage} />

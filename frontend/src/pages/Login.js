@@ -4,13 +4,13 @@ import { MdEast } from "react-icons/md";
 import "../pagesCss/Register.css";
 import api from "../api/axios.js";
 import { useDispatch } from "react-redux";
-import { addUserData } from "../Redux/UserSlice.js";
-
-
-
+import { addUserExist } from "../Redux/IsAnonymous.js";
 function Login() {
+
+  const dispatch = useDispatch();
+
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+
   const [userDetails, setUserDetails] = useState({
     username: "",
     password: "",
@@ -29,13 +29,15 @@ function Login() {
     } else if (userDetails.tc == false) {
       alert("Please accept tand c");
     } else {
-      const resp = await api.post("/login", userDetails)
+      const resp = await api.post("/login", userDetails, {
+        withCredentials:true,
+        credentials: 'include',
+      })
       .catch((err) => console.log(err.response));
 
-      if(resp.status == 200){
-        
-          dispatch(addUserData(userDetails))
-          navigate('/')
+      if(resp.status === 200){
+        dispatch(addUserExist())
+        navigate('/');
       }
     }
   };
