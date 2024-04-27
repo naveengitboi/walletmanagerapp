@@ -1,18 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import DashboardHeader from '../components/DashboardHeader'
 import { Link, Outlet } from 'react-router-dom'
 import '../pagesCss/Dashboard.css'
-import AddMoneyType from '../components/AddMoneyType'
 import Analytics from '../components/Analytics'
 import RecentHistory from '../components/RecentHistory'
 
-// import api from '../api/axios'
-
 function Dashboard() {
-
-  useEffect(() => {
-    // const currentUser = api.get('/user/:')
-  }, [])
 
   return (
     <div className='page'>

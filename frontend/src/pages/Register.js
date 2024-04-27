@@ -5,6 +5,7 @@ import '../pagesCss/Register.css'
 import api from '../api/axios.js';
 import {useDispatch} from 'react-redux'
 import {addUserExist} from '../Redux/IsAnonymous'
+import Loader from '../components/Loader.js';
 
 function Register() {
     const dispatch = useDispatch()
@@ -63,9 +64,9 @@ function Register() {
 
     return (
         <div className='page registerPage'>
+
             <div className="bgSvg">
                 <img src="/assets/bg/bgillu.svg" alt="" />
-
             </div>
             <form action="">
                 <input type="text" placeholder='First Name' className='inputEle' name='firstName' onChange={handleChage} />

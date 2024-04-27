@@ -1,18 +1,24 @@
+import { lazy, Suspense } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import SideNav from "./components/SideNav";
-import Dashboard from "./pages/Dashboard";
-import Transactions from "./pages/Transactions";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
-import PasswordUpdate from "./settings/settingsApps/PasswordUpdate";
-import TwoFa from "./settings/settingsApps/TwoFa";
-import Analytics from "./pages/Analytics";
 import AddMoneyType from "./components/AddMoneyType";
-import Authenticated from "./api/Authenticated";
-import Logout from "./pages/Logout";
+import Loader from "./components/Loader";
+
+const Analytics = lazy(() => import('./pages/Analytics'))
+const Logout = lazy(() => import('./pages/Logout'))
+const Authenticated = lazy(() => import('./api/Authenticated'))
+const Profile = lazy(() => import('./pages/Profile'))
+const Transactions = lazy(() => import('./pages/Transactions'))
+const Dashboard = lazy(() => import('./pages/Dashboard'))
+const PasswordUpdate = lazy(() => import('./settings/settingsApps/PasswordUpdate'))
+const TwoFa = lazy(() => import('./settings/settingsApps/TwoFa'))
+const Login = lazy(() => import('./pages/Login'))
+const Register = lazy(() => import('./pages/Register'))
+const Guides = lazy(() => import('./GuidesPage/Guides'))
+const Beta = lazy(() => import('./pages/Beta'))
+
 function App() {
   const receivedType = {
     type: "from",
@@ -32,6 +38,7 @@ function App() {
           <SideNav />
           <div className="routesContainer ">
             <div className="insideRoutesContainer glassBg">
+              <Suspense fallback={<Loader/>}> 
               <Routes>
                 <Route path="/" element={<Authenticated>
                   <Dashboard />
@@ -91,7 +98,10 @@ function App() {
                     </Authenticated>
                   }
                 />
+                <Route path='/guide' element={<Guides/>} />
+                <Route path='/beta' element={<Beta/>} />
               </Routes>
+              </Suspense>
             </div>
           </div>
         </div>

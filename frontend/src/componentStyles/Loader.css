@@ -1,0 +1,27 @@
+.loaderContainer
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.outerLoader 
+{
+    --size: 50px;
+    height: var(--size);
+    width: var(--size);
+    border-radius: 50%;
+    border: 5px solid var(--dark_gray);
+    border-bottom-color: transparent;
+    position: relative;
+    animation: spinwheel 0.5s linear infinite;
+}
+
+@keyframes spinwheel {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
