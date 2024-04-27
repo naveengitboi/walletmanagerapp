@@ -24,7 +24,7 @@ router.post('/register', registerUser)
 router.post('/login', loginUser)
 
 //lout out
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     res.clearCookie("token");
     res.send('Log out successful');
 })
