@@ -4,7 +4,6 @@ import { registerUser, loginUser, getAllUsers, updateUser, getOwnUser, deleteUse
 import { verifyToken } from '../middlewares/auth.js';
 
 
-
 const router = express.Router()
 
 //get users

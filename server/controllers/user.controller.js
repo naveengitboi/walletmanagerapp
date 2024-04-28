@@ -1,115 +1,90 @@
-import userModel from '../models/user.model.js'
-import bcrypt from 'bcrypt'
-import { generateToken } from '../middlewares/auth.js'
+import userModel from "../models/user.model.js";
+import bcrypt from "bcrypt";
+import { generateToken } from "../middlewares/auth.js";
+import asyncErrorHandler from "../utils/asynErrorHandler.js";
 
 //sign in
-const registerUser = async (req, res) => {
-    try {
-        const userData = req.body;
-        const salts = 10;
-        const hashedPwd = await bcrypt.hash(userData.password, salts)
-        console.log(userData)
-        const dataModified = {
-            user_name: userData.userName,
-            first_name: userData.firstName,
-            last_name: userData.lastName,
-            email: userData.email,
-            password: hashedPwd
-        }
-
-        const newUser = new userModel(dataModified)
-        const addedUser = await newUser.save()
-        generateToken(res, {userId : addedUser._id});
-        res.send('user added successfully')
-        
-    } catch (error) {
-        res.send(error).status(400)
-    }
-}
-
+const registerUser = asyncErrorHandler(async (req, res) => {
+  const userData = req.body;
+  const salts = 10;
+  const hashedPwd = await bcrypt.hash(userData.password, salts);
+  console.log(userData);
+  const dataModified = {
+    user_name: userData.userName,
+    first_name: userData.firstName,
+    last_name: userData.lastName,
+    email: userData.email,
+    password: hashedPwd,
+  };
+  const newUser = new userModel(dataModified);
+  const addedUser = await newUser.save();
+  generateToken(res, { userId: addedUser._id });
+  res.send("user added successfully");
+});
 
 //login
-const loginUser = async (req, res) => {
-    try {
-        const userData = {
-            user_name: req.body.username,
-            password: req.body.password
-        };
-   
-        const dbData = await userModel.findOne({ user_name: userData.user_name })
+const loginUser = asyncErrorHandler(async (req, res) => {
+  const userData = {
+    user_name: req.body.username,
+    password: req.body.password,
+  };
 
-        if (dbData) {
-            const isMatched = await bcrypt.compare(userData.password, dbData.password)
-            if (isMatched) {
-                generateToken(res,{ userId: dbData._id})
-                res.send('Loginn Sucess').status(200)
-            }
-            else {
-                res.send('passwords didnt match').status(400)
-            }
-        } else {
-        
-            res.status(400).json({msg: 'Something awful'})
-        }
+  const isUserFound = await userModel.findOne({ user_name: userData.user_name });
 
-    } catch (error) {
-        res.send(error).status(400)
+  if (isUserFound) {
+    const isMatched = await bcrypt.compare(userData.password, dbData.password);
+    if (isMatched) {
+      generateToken(res, { userId: dbData._id });
+      res.status(200).json({ success: true, output: "Successfull log in" });
+    } else {
+      res.status(400).json({ success: false, output: "Bad request or Wrong Credintials" });
     }
-}
-
+  } else {
+    res.status(401).json({ success: false, output: "Unauthorized User" });
+  }
+});
 
 //getAll users
-const getAllUsers = async (req, res) => {
-    try {
-        const users = await userModel.find();
-        res.send(users);
-    } catch (error) {
-        console.log(error)
-    }
-}
+const getAllUsers = asyncErrorHandler(async (req, res) => {
+  const users = await userModel.find();
+  res.status(200).json({ success: true, output: users });
+});
 
 //get one user
-const getOwnUser = async (req, res) => {
-    try {
-        const id = req.userPayload
-        // console.log(id)
-        const user = await userModel.findById(id)
-        res.send(user).status(200)
-    } catch (error) {
-        res.send(error)
-    }
-}
+const getOwnUser = asyncErrorHandler(async (req, res) => {
+  const id = req.userPayload;
+  // console.log(id)
+  const user = await userModel.findById(id);
+  res.status(200).json({ success: true, output: user })
+});
 
 //update userdetails
-const updateUser = async (req, res) => {
-    try {
-        const id = req.userPayload
-        const userData = req.body
-        const updateData = {
-            user_name: userData.userName,
-            first_name: userData.firstName,
-            last_name: userData.lastName,
-            ...userData
-        }
-        const updatedUser = await userModel.findByIdAndUpdate(id, updateData, { new: true })
-        res.send(updatedUser)
-    }
-    catch (error) {
-        res.send(error)
-    }
-}
+const updateUser = asyncErrorHandler(async (req, res) => {
+  const id = req.userPayload;
+  const userData = req.body;
+  const updatedData = {
+    ...userData,
+    phone: parseInt(userData.phone)
+  }
+
+  const updatedUser = await userModel.findByIdAndUpdate(id, updatedData, {
+    new: true,
+  });
+  res.status(200).json({ success: true, output: "updated successfully" });
+});
 
 //delete user account
-const deleteUser = async (req, res) => {
-    try {
-        const id = req.userPayload
-        await userModel.findByIdAndDelete(id)
-        
-        res.send('user deleted')
-    } catch (error) {
-        res.send(error)
-    }
-}
+const deleteUser = asyncErrorHandler(async (req, res) => {
+  const id = req.userPayload;
+  await userModel.findByIdAndDelete(id);
+  res.status(200).json({ success: true, output: "user deleted" });
+});
 
-
-export { registerUser, loginUser, getAllUsers, updateUser, getOwnUser, deleteUser }
+export {
+  registerUser,
+  loginUser,
+  getAllUsers,
+  updateUser,
+  getOwnUser,
+  deleteUser,
+};

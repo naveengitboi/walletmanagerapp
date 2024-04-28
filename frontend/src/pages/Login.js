@@ -24,9 +24,9 @@ function Login() {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (userDetails.username == "" || userDetails.password == "") {
+    if (userDetails.username === "" || userDetails.password === "") {
       alert("Enter correct details or register as new");
-    } else if (userDetails.tc == false) {
+    } else if (userDetails.tc === false) {
       alert("Please accept tand c");
     } else {
       const resp = await api.post("/login", userDetails, {

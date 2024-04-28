@@ -10,8 +10,7 @@ function Logout() {
             await api.get('/logout', {
                 withCredentials:true,
             })
-
-            dispatch(removeUserExist()) 
+            dispatch(removeUserExist());
         }
         logOutFunc()
     }, [])

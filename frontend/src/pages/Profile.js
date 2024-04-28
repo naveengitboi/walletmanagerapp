@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import '../pagesCss/Profile.css'
 import { MdEdit } from "react-icons/md";
-import Settings from './Settings';
+import Settings from './Settings'
 import api from '../api/axios';
 
 
 function Profile() {
     const currentUser = {
-        firstName: '',
-        lastName:'',
+        first_name: '',
+        last_name: '',
         email: '',
-        phnum: ''
+        phone: '',
+        account_numbers: ['']
     }
     const [userDetails, setuserDetails] = useState(currentUser)
     const [giveEditAccess, setGiveEditAccess] = useState(false)
@@ -21,16 +22,9 @@ function Profile() {
                 withCredentials: true,
                 credentials: 'include',
             })
+            const output = userData.data.output
+            setuserDetails(output)
 
-            const updatedUserKeysData = {
-                userName: userData.data.user_name,
-                firstName: userData.data.first_name,
-                lastName: userData.data.last_name,
-                email: userData.data.email,
-            }
-
-            setuserDetails(updatedUserKeysData)
-            
         }
         getOwnerDetails()
 
@@ -39,10 +33,15 @@ function Profile() {
     const changeUserData = (e) => {
         const value = e.target.value;
         const key = e.target.name
-        setuserDetails({...userDetails, [key]:value})
+        setuserDetails({ ...userDetails, [key]: value })
     }
 
-    const updateUserDb = () => {
+    const updateUserDb = async () => {
+        console.log(userDetails)
+        const updateUser = await api.put('/update', userDetails, {
+            withCredentials: true,
+            credentials: 'include'
+        })
         setGiveEditAccess(false)
     }
 
@@ -57,7 +56,7 @@ function Profile() {
                 <div className="profileEdits">
                     <div className="editSection">
                         <p className='pMedium'>Edit Details</p>
-                        <div className="editIcon" onClick={() => setGiveEditAccess(true)}>
+                        <div className="editIcon" onClick={() => setGiveEditAccess(!giveEditAccess)}>
                             <MdEdit />
                         </div>
                     </div>
@@ -65,28 +64,34 @@ function Profile() {
                     <div className="userInfo">
                         <div className="userValues">
                             <p className='tinyText'>First Name</p>
-                            <input type="text" className='inputEle userValueInput' value={userDetails.firstName}
-                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="firstName" />
+                            <input type="text" className='inputEle userValueInput' value={userDetails.first_name}
+                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="first_name" />
                         </div>
                         <div className="userValues">
                             <p className='tinyText'>Last Name</p>
-                            <input type="text" className='inputEle userValueInput' value={userDetails.lastName}
-                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="lastName"/>
+                            <input type="text" className='inputEle userValueInput' value={userDetails.last_name}
+                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="last_name" />
                         </div>
                         <div className="userValues">
                             <p className='tinyText'>Email</p>
                             <input type="text" className='inputEle userValueInput' value={userDetails.email}
-                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="email"/>
+                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="email" />
                         </div>
                         <div className="userValues">
                             <p className='tinyText'>Phone Number</p>
-                            <input type="text" className='inputEle userValueInput' value={userDetails.phnum}
-                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="phoneNumber"/>
+                            <input type="text" className='inputEle userValueInput' value={userDetails.phone}
+                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="phone" />
                         </div>
                         <div className="userValues">
                             <p className='tinyText'>Account Number</p>
-                            <input type="text" className='inputEle userValueInput' value={userDetails.accNum}
-                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="accountNumber" />
+                            <input type="text" className='inputEle userValueInput' value={''}
+                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="account_numbers" />
+                            {/* {
+                                userDetails.account_numbers?.map((num, idx) => {
+                                    return (<p className='tinyText' key={idx}>{num}</p>)
+                                })
+                            } */}
+
                         </div>
                     </div>
                 </div>

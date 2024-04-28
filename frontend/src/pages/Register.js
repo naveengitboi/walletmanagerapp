@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdEast } from "react-icons/md";
 import '../pagesCss/Register.css'
 import api from '../api/axios.js';
 import {useDispatch} from 'react-redux'
 import {addUserExist} from '../Redux/IsAnonymous'
-import Loader from '../components/Loader.js';
 
 function Register() {
     const dispatch = useDispatch()
@@ -16,7 +15,7 @@ function Register() {
              withCredentials: true,
              credentials: 'include',
          })
-        if (res.statusText == "OK") {
+        if (res.statusText === "OK") {
             dispatch(addUserExist())
             navigate('/', {replace:true})
         }
@@ -46,7 +45,7 @@ function Register() {
     }
     const handleRegister = (e) => {
         e.preventDefault()
-        if (userDetails.confirmPwd != userDetails.password) {
+        if (userDetails.confirmPwd !== userDetails.password) {
             alert('Enter Correct passwords')
         } else {
             const data = {
