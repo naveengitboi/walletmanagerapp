@@ -35,9 +35,9 @@ const loginUser = asyncErrorHandler(async (req, res) => {
     const isMatched = await bcrypt.compare(userData.password, dbData.password);
     if (isMatched) {
       generateToken(res, { userId: dbData._id });
-      res.status(200).json({success:true, output:"Successfull log in"});
+      res.status(200).json({ success: true, output: "Successfull log in" });
     } else {
-      res.status(400).json({success:false, output:"Bad request or Wrong Credintials"});
+      res.status(400).json({ success: false, output: "Bad request or Wrong Credintials" });
     }
   } else {
     res.status(401).json({ success: false, output: "Unauthorized User" });
@@ -47,7 +47,7 @@ const loginUser = asyncErrorHandler(async (req, res) => {
 //getAll users
 const getAllUsers = asyncErrorHandler(async (req, res) => {
   const users = await userModel.find();
-  res.status(200).json({success:true, output:users});
+  res.status(200).json({ success: true, output: users });
 });
 
 //get one user
@@ -62,13 +62,12 @@ const getOwnUser = asyncErrorHandler(async (req, res) => {
 const updateUser = asyncErrorHandler(async (req, res) => {
   const id = req.userPayload;
   const userData = req.body;
-  const updateData = {
-    user_name: userData.userName,
-    first_name: userData.firstName,
-    last_name: userData.lastName,
+  const updatedData = {
     ...userData,
-  };
-  const updatedUser = await userModel.findByIdAndUpdate(id, updateData, {
+    phone: parseInt(userData.phone)
+  }
+
+  const updatedUser = await userModel.findByIdAndUpdate(id, updatedData, {
     new: true,
   });
   res.status(200).json({ success: true, output: "updated successfully" });
@@ -78,7 +77,7 @@ const updateUser = asyncErrorHandler(async (req, res) => {
 const deleteUser = asyncErrorHandler(async (req, res) => {
   const id = req.userPayload;
   await userModel.findByIdAndDelete(id);
-  res.status(200).json({success:true,output:"user deleted"});
+  res.status(200).json({ success: true, output: "user deleted" });
 });
 
 export {
