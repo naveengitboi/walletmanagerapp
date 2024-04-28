@@ -1,60 +1,68 @@
 import TransactionModel from "../models/transaction.model.js";
-
+import asyncErrorHandler from "../utils/asynErrorHandler.js";
 
 //transaction
-const transaction = async (req, res) => {
-    try {
-        const query = req.query
-            const modifiedData  = {
-                ...req.body,
-                transType: query.type,
-                fromImg: "naveen.logo.png"
-            }
-            const newTrans = new TransactionModel(modifiedData);
-            
-            await newTrans.save();
-            res.send("Added successfully")
-            
+const transaction = asyncErrorHandler(async (req, res) => {
+  const id = req.userPayload;
+  const query = req.query;
+  const modifiedData = {
+    ...req.body,
+    ownerId: id,
+    transType: query.type,
+    fromImg: "naveen.logo.png",
+  };
+  const newTrans = new TransactionModel(modifiedData);
 
-    } catch (error) {
-        res.send(error)
-    }
-}
+  await newTrans.save();
+  res.status(200).json({ success: true, output: "Added successfully" });
+});
 
-const getAllTrans = async (req, res) => {
-    try {
-        const history = await TransactionModel.find();
-        res.send(history);
-    } catch (error) {
-        res.send(error)
-    }
-}
+const getAllTrans = asyncErrorHandler(async (req, res) => {
+  const id = req.userPayload;
+  const history = await TransactionModel.find({
+    ownerId: id,
+  });
+  res.status(200).json({ success: true, output: history });
+});
 
-const deleteTrans = async (req,res) => {
-    try {
-        const {id} = req.params
-        await TransactionModel.findOneAndDelete({_id: id})
+const deleteTrans = asyncErrorHandler(async (req, res) => {
+  await TransactionModel.findOneAndDelete({
+    $and: [
+      {
+        _id: req.params.id,
+      },
+      {
+        ownerId: req.userPayload,
+      },
+    ],
+  });
+  res.status(200).json({
+    success: true,
+    output: "Deleted Successfully",
+  });
+});
 
-        res.send('Deleted Successfully')
-        
-    } catch (error) {
-        res.send(error)
-    }
-}
+const updateTrans = asyncErrorHandler(async (req, res) => {
+  const data = req.body;
+  const updateDbs = await TransactionModel.findOneAndUpdate(
+    {
+      $and: [
+        {
+          _id: req.params.id,
+        },
+        {
+          ownerId: req.userPayload,
+        },
+      ],
+    },
+    data,
+    { new: true }
+  );
 
-const updateTrans = async (req, res) => {
-    try {
-        
-         
-        const data = req.body
-        const updateDb = await TransactionModel.findOneAndUpdate({_id: req.params.id}, data)
+  res.status(200).json({
+    success: true,
+    output: "updated data",
+  });
+});
 
-        res.send('updated data')
-    } catch (error) {
-        res.send(error)
-    }
-}
-
-
-
-export {transaction, getAllTrans, deleteTrans, updateTrans}
+export { transaction, getAllTrans, deleteTrans, updateTrans };

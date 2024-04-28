@@ -1,12 +1,15 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
-import userRouter from './routes/user.route.js'
-import transactionRouter from './routes/transaction.route.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 
+//files imports
+import errorMiddleware from './middlewares/errorMiddleware.js';
+import errorHandler from './utils/customError.js'
+import userRouter from './routes/user.route.js'
+import transactionRouter from './routes/transaction.route.js'
 //middlewares
 const app = express()
 app.use(express.json())
@@ -32,7 +35,12 @@ const dbConnect = async () => {
 
 app.use('/api', userRouter)
 app.use('/api', transactionRouter)
+app.all('*', (req, res, next) => {
+    const err = new errorHandler( `Cannot find this ${req.originalUrl} page`,404)
+    next(err)
+})
 
+app.use(errorMiddleware)
 
 //listen 
 app.listen(process.env.PORT || 8000, () => {

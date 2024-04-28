@@ -23,7 +23,7 @@ function Settings() {
           <Link><button className='defaultBtn buttonWithIcon'>Report Bug <MdBugReport /> </button></Link>
         </div>
         <div className="updateBtn">
-          <a href='https://github.com/naveengitboi/walletmanagerapp' target='_blank'><button className='defaultBtn buttonWithIcon'>Contribute Code <SiCodeigniter /> </button></a>
+          <a href='https://github.com/naveengitboi/walletmanagerapp' target='_blank' rel="noreferrer"><button className='defaultBtn buttonWithIcon'>Contribute Code <SiCodeigniter /> </button></a>
         </div>
         <div className="updateBtn">
           <Link><button className='defaultBtn buttonWithIcon lightRedBg svgWhite'>Delete Account <MdDelete /> </button></Link>
