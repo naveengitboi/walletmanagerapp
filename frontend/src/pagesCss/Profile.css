@@ -21,8 +21,9 @@
   border-radius: 5%;
 }
 .profileEdits {
+  --bradius: 0.85rem;
   background-color: var(--white_color);
-  border-radius: 0.85rem;
+  border-radius: var(--bradius);
   font-weight: 600;
   width: 100%;
 }
@@ -32,8 +33,14 @@
   display: flex;
   justify-content: space-between;
   box-shadow: 0 2px 0px rgb(201, 201, 201);
-  padding: 1rem 1.85rem;
 }
+.editIcon, .editSection .pMedium
+{
+  padding: 1rem 1.85rem;
+   border-top-right-radius: var(--bradius);
+}
+
+
 .editSection .editIcon svg {
   font-size: var(--svg_size);
   cursor: pointer;

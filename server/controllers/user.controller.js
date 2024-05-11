@@ -8,7 +8,6 @@ const registerUser = asyncErrorHandler(async (req, res) => {
   const userData = req.body;
   const salts = 10;
   const hashedPwd = await bcrypt.hash(userData.password, salts);
-  console.log(userData);
   const dataModified = {
     user_name: userData.userName,
     first_name: userData.firstName,
@@ -32,9 +31,9 @@ const loginUser = asyncErrorHandler(async (req, res) => {
   const isUserFound = await userModel.findOne({ user_name: userData.user_name });
 
   if (isUserFound) {
-    const isMatched = await bcrypt.compare(userData.password, dbData.password);
+    const isMatched = await bcrypt.compare(userData.password, isUserFound.password);
     if (isMatched) {
-      generateToken(res, { userId: dbData._id });
+      generateToken(res, { userId: isUserFound._id });
       res.status(200).json({ success: true, output: "Successfull log in" });
     } else {
       res.status(400).json({ success: false, output: "Bad request or Wrong Credintials" });
@@ -62,11 +61,23 @@ const getOwnUser = asyncErrorHandler(async (req, res) => {
 const updateUser = asyncErrorHandler(async (req, res) => {
   const id = req.userPayload;
   const userData = req.body;
-  const updatedData = {
-    ...userData,
-    phone: parseInt(userData.phone)
+  console.log(userData)
+  let updatedData = {...userData}
+  if(Boolean(userData.password)){
+    const salts = 10;
+    const hashedPwd = await bcrypt.hash(userData.password, salts);
+    updatedData = {
+      ...userData,
+      password : hashedPwd,
+      phone: parseInt(userData.phone)
+    }
+  }else{
+    updatedData = {
+      ...userData,
+      phone: parseInt(userData.phone)
+    }
   }
-
+  
   const updatedUser = await userModel.findByIdAndUpdate(id, updatedData, {
     new: true,
   });

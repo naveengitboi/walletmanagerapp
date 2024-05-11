@@ -37,7 +37,7 @@ function Header() {
       </div>
 
       <div className="infoNavContainer">
-        <div className="notifications" ref={toggleRef} >
+        <div className="notifications addHoverEffect" ref={toggleRef} >
           <MdCampaign onClick={() => setToggle(!toggle)} />
           
             {toggle && <MessageModel/>}
