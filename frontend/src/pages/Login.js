@@ -34,7 +34,6 @@ function Login() {
         credentials: 'include',
       })
       .catch((err) => console.log(err.response));
-
       if(resp.status === 200){
         dispatch(addUserExist())
         navigate('/');

@@ -257,3 +257,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, .appContainer::-webkit-scrollb
   border-radius: 50%;
   background-image: linear-gradient(rgb(255, 165, 193), rgb(169, 235, 251));
 }
+.addHoverEffect
+{
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.addHoverEffect:hover
+{
+  background-color: lightgray;
+}

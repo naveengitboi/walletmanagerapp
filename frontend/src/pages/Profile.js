@@ -56,7 +56,7 @@ function Profile() {
                 <div className="profileEdits">
                     <div className="editSection">
                         <p className='pMedium'>Edit Details</p>
-                        <div className="editIcon" onClick={() => setGiveEditAccess(!giveEditAccess)}>
+                        <div className="editIcon addHoverEffect" onClick={() => setGiveEditAccess(!giveEditAccess)}>
                             <MdEdit />
                         </div>
                     </div>

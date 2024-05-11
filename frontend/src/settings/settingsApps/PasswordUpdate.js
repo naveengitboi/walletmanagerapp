@@ -4,7 +4,8 @@ import { MdEast } from "react-icons/md";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import { MdOutlineCancelScheduleSend } from "react-icons/md";
 import '../settingsCss/PasswordUpdate.css'
-
+import '../../pagesCss/Register.css'
+import api from "../../api/axios.js";
 function PasswordUpdate() {
 
     const navigate = useNavigate();
@@ -20,10 +21,25 @@ function PasswordUpdate() {
         setUserDetails({ ...userDetails, [name]: val })
 
     }
-    const handlePwdChange = (e) => {
-        e.preventDefault()
+    const handlePwdChange = async (e) => {
+        e.preventDefault();
+        if(userDetails.newPwd != userDetails.confirmNewPwd){
+            alert('Enter same in both the text areas');
+        }
+        else{
+            const response = await api.put('/update',{password : userDetails.newPwd}, {
+                withCredentials: true,
+                credentials: 'include',
+            }).catch((err) => console.log(err.response));
+
+           console.log(response)
+        }
+
+        
+
     }
 
+    console.log(userDetails)
 
 
     return (

@@ -2,7 +2,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 2rem;
+  padding: 0 2rem;
   background-color: #ffffffea;
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
@@ -23,9 +23,9 @@ nav {
   justify-content: center;
 }
 .notifications {
-  padding: 0 0.85rem;
+  padding: 0.85rem;
   cursor: pointer;
-  margin: 0 0.15rem;
+  margin: 0 0.35rem;
   position: relative;
 }
 .notifications svg {

@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import SideNav from "./components/SideNav";
 import AddMoneyType from "./components/AddMoneyType";
 import Loader from "./components/Loader";
-
 const Analytics = lazy(() => import('./pages/Analytics'))
 const Logout = lazy(() => import('./pages/Logout'))
 const Authenticated = lazy(() => import('./api/Authenticated'))
@@ -35,6 +34,8 @@ function App() {
     <>
       <div className="App">
         <Header />
+        
+        
         <div className="appContainer">
           <SideNav />
           <div className="routesContainer ">

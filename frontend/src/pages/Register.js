@@ -67,6 +67,7 @@ function Register() {
             <div className="bgSvg">
                 <img src="/assets/bg/bgillu.svg" alt="" />
             </div>
+           
             <form action="">
                 <input type="text" placeholder='First Name' className='inputEle' name='firstName' onChange={handleChage} />
                 <input type="text" placeholder='Last Name' className='inputEle' name='lastName' onChange={handleChage} />
