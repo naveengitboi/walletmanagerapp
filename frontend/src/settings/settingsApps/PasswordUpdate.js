@@ -27,7 +27,7 @@ function PasswordUpdate() {
             alert('Enter same in both the text areas');
         }
         else{
-            const response = await api.put('/update',{password : userDetails.newPwd}, {
+            const response = await api.put('/update/password',{password : userDetails.newPwd}, {
                 withCredentials: true,
                 credentials: 'include',
             }).catch((err) => console.log(err.response));
