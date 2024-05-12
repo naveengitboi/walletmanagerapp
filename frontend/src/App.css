@@ -183,6 +183,8 @@ a {
 body {
   color: var(--dark_gray);
   background-image: url("/public/bg_svg.svg");
+  background-blend-mode: color;
+  background-color: rgba(234, 234, 234, 0.917);
   background-size: cover;
   overflow-x: hidden;
   width: 100vw;

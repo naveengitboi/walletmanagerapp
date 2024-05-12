@@ -28,15 +28,22 @@ const loginUser = asyncErrorHandler(async (req, res) => {
     password: req.body.password,
   };
 
-  const isUserFound = await userModel.findOne({ user_name: userData.user_name });
+  const isUserFound = await userModel.findOne({
+    user_name: userData.user_name,
+  });
 
   if (isUserFound) {
-    const isMatched = await bcrypt.compare(userData.password, isUserFound.password);
+    const isMatched = await bcrypt.compare(
+      userData.password,
+      isUserFound.password
+    );
     if (isMatched) {
       generateToken(res, { userId: isUserFound._id });
       res.status(200).json({ success: true, output: "Successfull log in" });
     } else {
-      res.status(400).json({ success: false, output: "Bad request or Wrong Credintials" });
+      res
+        .status(400)
+        .json({ success: false, output: "Bad request or Wrong Credintials" });
     }
   } else {
     res.status(401).json({ success: false, output: "Unauthorized User" });
@@ -54,36 +61,41 @@ const getOwnUser = asyncErrorHandler(async (req, res) => {
   const id = req.userPayload;
   // console.log(id)
   const user = await userModel.findById(id);
-  res.status(200).json({ success: true, output: user })
+  res.status(200).json({ success: true, output: user });
 });
 
 //update userdetails
 const updateUser = asyncErrorHandler(async (req, res) => {
   const id = req.userPayload;
   const userData = req.body;
-  console.log(userData)
-  let updatedData = {...userData}
-  if(Boolean(userData.password)){
-    const salts = 10;
-    const hashedPwd = await bcrypt.hash(userData.password, salts);
-    updatedData = {
-      ...userData,
-      password : hashedPwd,
-      phone: parseInt(userData.phone)
-    }
-  }else{
-    updatedData = {
-      ...userData,
-      phone: parseInt(userData.phone)
-    }
-  }
-  
-  const updatedUser = await userModel.findByIdAndUpdate(id, updatedData, {
+  console.log(userData);
+
+  const updatedData = {
+    ...userData,
+    phone: parseInt(userData.phone),
+  };
+
+  await userModel.findByIdAndUpdate(id, updatedData, {
     new: true,
   });
   res.status(200).json({ success: true, output: "updated successfully" });
 });
 
+const updatePassword = asyncErrorHandler(async (req, res) => {
+  const id = req.userPayload;
+  const userData = req.body;
+  const hashedPwd = await bcrypt.hash(userData.password, salts);
+  updatedData = {
+    password: hashedPwd,
+  };
+
+  await userModel.findByIdAndUpdate(id, updatedData, {
+    new: true,
+  });
+  
+  res.status(200).json({ success: true, output: "updated successfully" });
+
+});
 //delete user account
 const deleteUser = asyncErrorHandler(async (req, res) => {
   const id = req.userPayload;
@@ -96,6 +108,7 @@ export {
   loginUser,
   getAllUsers,
   updateUser,
+  updatePassword,
   getOwnUser,
   deleteUser,
 };

@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { registerUser, loginUser, getAllUsers, updateUser, getOwnUser, deleteUser } from "../controllers/user.controller.js";
+import { registerUser, loginUser, getAllUsers, updateUser, getOwnUser, deleteUser, updatePassword } from "../controllers/user.controller.js";
 import { verifyToken } from '../middlewares/auth.js';
 
 
@@ -13,6 +13,7 @@ router.get('/user',verifyToken,  getOwnUser)
 
 //updateUserDetails
 router.put('/update', verifyToken, updateUser)
+router.put('/update/password', verifyToken, updatePassword)
 
 //delete user
 router.delete('/remove', verifyToken, deleteUser)
