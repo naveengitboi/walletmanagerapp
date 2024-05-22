@@ -21,9 +21,8 @@
 }
 .amcNavbar {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   color: inherit;
   background-color: white;
 }
@@ -31,8 +30,19 @@
   color: inherit;
   font-weight: 600;
   text-decoration: none;
-  padding: 0.85rem 2.5rem;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.8rem;
+  border: 1px solid rgb(240, 240, 240);
+    
+}
+
+.amcNavbar a:active
+{
+  background-color: rgb(213, 213, 213);
 }
 .transactionsHistoryContainer {
   width: 100%;
@@ -47,10 +57,9 @@
   text-align: center;
 }
 
-
 @media screen and (max-width: 1025px) {
-  .dashboardHeader
-  {
+  .dashboardHeader {
     overflow: scroll;
   }
+
 }

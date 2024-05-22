@@ -33,7 +33,6 @@ function Dashboard() {
               <Link to='/paid'>Debt</Link>
             </div>
             <Outlet />
-
           </div>
 
           <div className="transactionsHistoryContainer">

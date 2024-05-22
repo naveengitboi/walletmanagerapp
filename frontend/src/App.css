@@ -25,7 +25,7 @@
   /* colors */
 
   --light_gray: #efefef;
-  --white_color: white;
+  --white_color: rgb(243, 239, 239);
   --blue_color: #7091f5;
   --light_green: #00ab88;
   --light_gray: #636363;
@@ -184,7 +184,8 @@ body {
   color: var(--dark_gray);
   background-image: url("/public/bg_svg.svg");
   background-blend-mode: color;
-  background-color: rgba(234, 234, 234, 0.917);
+  /* background-color: ; */
+  background-image: radial-gradient(rgb(204, 249, 255), rgba(187, 236, 255, 0));
   background-size: cover;
   overflow-x: hidden;
   width: 100vw;
@@ -315,7 +316,7 @@ body::-webkit-scrollbar,
   }
 
   .defaultBtn {
-    padding: 0.5rem;
+    padding: 0.85rem;
   }
   .buttonWithIcon {
     padding: 0.85rem 1.1rem;
