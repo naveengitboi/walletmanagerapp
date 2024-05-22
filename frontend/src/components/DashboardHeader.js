@@ -5,7 +5,7 @@ function DashboardHeader() {
         <div className='glassBg infoContainer'>
             <p className='topHeadings'>Remaining</p>
             <div className="moneyInfo">
-                <h1 className='hLarge'>$2000</h1>
+                <p className="hLarge">$2000</p>
                 <div className="bottomHeader">
                     <p className='pSmall'>Usage Rate</p>
                     <p className='pSmall'>+200</p>

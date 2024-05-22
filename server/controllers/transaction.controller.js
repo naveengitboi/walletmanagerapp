@@ -18,9 +18,16 @@ const transaction = asyncErrorHandler(async (req, res) => {
 });
 
 const getAllTrans = asyncErrorHandler(async (req, res) => {
+  const query = req.query
+ 
   const id = req.userPayload;
   const history = await TransactionModel.find({
-    ownerId: id,
+    $and:[
+      {
+        ownerId: id,
+        through: query.through
+      }
+    ]
   });
   res.status(200).json({ success: true, output: history });
 });
