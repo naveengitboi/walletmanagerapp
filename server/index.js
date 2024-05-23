@@ -17,7 +17,7 @@ dotenv.config()
 app.use(cookieParser('wmanagerapp'))
 app.use(cors(
     {
-        origin: "http://localhost:3000",
+        origin: ["http://localhost:3000","https://walletmanagerapp.vercel.app"],
         credentials: true,
     }
 ))
