@@ -55,3 +55,18 @@
 .historyItem .tsItem .pSmall {
   font-weight: 600;
 }
+
+@media screen and (max-width: 769px) {
+    .tsItem .userProfile
+    {
+      width: 30px;
+      height: 30px;
+    }
+}
+
+@media screen and (max-width: 543px) {
+    .tsItem 
+    {
+      min-width: 100%;
+    }
+}

@@ -102,6 +102,7 @@ function Profile() {
             </div>
 
             <div className="settingsSection">
+                <p className='pSmall settingsHeader'>Settings</p>
                 <Settings />
             </div>
 

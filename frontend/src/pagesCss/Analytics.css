@@ -14,3 +14,17 @@
   padding: 1rem 0;
   margin: 0.85rem 0;
 }
+
+@media screen and (max-width: 769px) {
+  .chartContainer {
+    display: flex;
+    overflow-x: scroll;
+    padding: 1rem 0;
+  }
+  .chartContainer div {
+    --size: 400px;
+    height: var(--size);
+    min-width: var(--size);
+    margin: 0 1rem ;
+  }
+}

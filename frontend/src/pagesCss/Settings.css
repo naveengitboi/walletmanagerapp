@@ -22,3 +22,18 @@
 .updateBtn a .defaultBtn {
   width: 100%;
 }
+
+@media screen and (max-width: 1025px) {
+  .updateBtnsContainer
+  {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 426px) {
+ 
+  .updateBtnsContainer
+  {
+    width: 100%;
+  }
+}

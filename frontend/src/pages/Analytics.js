@@ -1,7 +1,9 @@
 import React from 'react'
-import Charts from '../components/Charts'
+// import Charts from '../components/Charts'
 import '../pagesCss/Analytics.css'
 import TransactionItem from '../components/TransactionItem'
+
+
 function Analytics() {
     return (
         <div className='page analyticContainer'>

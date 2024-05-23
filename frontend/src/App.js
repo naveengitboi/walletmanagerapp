@@ -34,8 +34,6 @@ function App() {
     <>
       <div className="App">
         <Header />
-        
-        
         <div className="appContainer">
           <SideNav />
           <div className="routesContainer ">
