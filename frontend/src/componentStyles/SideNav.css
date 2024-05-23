@@ -60,3 +60,17 @@
       margin:0 1rem ;
     }
 }
+
+
+@media screen and (max-width:523px) {
+    .sideNavbar
+    {
+      overflow-x: scroll;
+      padding: 0 2rem ;
+    }
+
+    .sideNavbar::-webkit-scrollbar
+    {
+      display: none;
+    }
+}

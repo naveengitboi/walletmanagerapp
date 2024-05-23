@@ -42,7 +42,7 @@
 .amcNavbar a:active {
   background-color: rgb(213, 213, 213);
 }
-.transactionsHistoryContainer {
+.trsHCOuterContainer {
   width: 100%;
   margin: 1rem 0 0;
   padding: 0.85rem 1rem;
@@ -76,6 +76,12 @@
   .analyticsContainer {
     background-color: white;
     width: 100%;
+  }
+}
 
+@media screen and (max-width: 543px) {
+  .transactionsHistoryContainer  {
+    overflow-x: scroll;
+    border: 1px solid rgb(241, 179, 179);
   }
 }

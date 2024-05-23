@@ -35,8 +35,10 @@ function Dashboard() {
             <Outlet />
           </div>
 
-          <div className="transactionsHistoryContainer">
-            <RecentHistory />
+          <div className='trsHCOuterContainer'>
+            <div className="transactionsHistoryContainer">
+              <RecentHistory />
+            </div>
           </div>
         </div>
 

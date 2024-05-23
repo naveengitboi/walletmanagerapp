@@ -1,9 +1,11 @@
 import React from 'react'
 import HistoryItem from './HistoryItem'
 import '../componentStyles/TransactionItem.css'
+
+
 function RecentHistory() {
     return (
-        <div className='page recentHistoryContainer glassBg'>
+        <div className='page recentHistoryContainer'>
             <p className='tinyText addingDotAnimation'>Recent Transactions History <div className='dotAnimateIcon'></div></p>
             <div className="tsItemsHeader">
                 <p className='tinyText'>Profile</p>

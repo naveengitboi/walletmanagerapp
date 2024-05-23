@@ -67,6 +67,6 @@
 @media screen and (max-width: 543px) {
     .tsItem 
     {
-      min-width: 100%;
+      min-width: 120vw;
     }
 }
