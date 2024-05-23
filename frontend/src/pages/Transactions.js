@@ -13,7 +13,7 @@ function Transactions() {
                 </div>
 
                 <div className="downLoadBtn">
-                    <button className='defaultBtn buttonWithIcon'>Download<AiOutlineCloudDownload /></button>
+                    <button className='defaultBtn buttonWithIcon addHoverEffect'>Download<AiOutlineCloudDownload /></button>
                 </div>
             </div>
             <div className="itemsCollectionSection">

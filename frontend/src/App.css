@@ -15,8 +15,8 @@
 
   /* font size */
   --h_50px: 2.35rem;
-  --h_32px: 1.95rem;
-  --h_26px: 1.625rem;
+  --h_32px: 1.85rem;
+  --h_26px: 1.525rem;
   --p_20px: 1.25rem;
   --p_16px: 1rem;
   --p_14px: 0.879rem;
@@ -25,14 +25,14 @@
   /* colors */
 
   --light_gray: #efefef;
-  --white_color: rgb(243, 239, 239);
+  --white_color: rgb(251, 249, 249);
   --blue_color: #7091f5;
   --light_green: #00ab88;
   --light_gray: #636363;
-  --light_red: #ff6969;
-  --dark_gray: #3b3b3b;
-  --dark_green: #00725a;
-  --dark_red: #c90000;
+  --light_red: hsl(0, 98%, 68%);
+  --dark_gray: hsl(0, 0%, 23%);
+  --dark_green: hsl(167, 99%, 26%);
+  --dark_red: hsl(0, 100%, 60%);
   --wheat_active: rgb(255, 243, 220);
   --wheat_inactive: rgb(255, 251, 243);
   --lightest_white: rgb(225, 216, 216);
@@ -167,6 +167,7 @@
   background-color: var(--white_color);
   border-radius: 0.5rem;
   margin: 0.5rem 0;
+  box-shadow: 0 1px 3px rgb(218, 218, 218);
 }
 
 a {
@@ -185,8 +186,9 @@ body {
   background-image: url("/public/bg_svg.svg");
   background-blend-mode: color;
   /* background-color: ; */
-  background-image: radial-gradient(rgb(204, 249, 255), rgba(187, 236, 255, 0));
+  background-image: radial-gradient(rgba(174, 132, 52, 0.341), rgba(213, 255, 215, 0.166)), url("/public/bg_svg.svg");
   background-size: cover;
+
   overflow-x: hidden;
   width: 100vw;
   scroll-behavior: smooth;
@@ -255,7 +257,7 @@ body::-webkit-scrollbar,
   border-radius: 50%;
   background-image: linear-gradient(rgb(255, 165, 193), rgb(169, 235, 251));
 }
-.addHoverEffect {
+.addHoverEffect, .addGreenHoverEffect, .addRedHoverEffect .addDarkGrayHoverEffect {
   transition: all 0.15s ease;
   cursor: pointer;
 }
@@ -263,7 +265,17 @@ body::-webkit-scrollbar,
 .addHoverEffect:hover {
   background-color: lightgray;
 }
-
+.addGreenHoverEffect:hover {
+  background-color: var(--dark_green);
+}
+.addRedHoverEffect:hover
+{
+    background-color: var(--dark_red);
+}
+.addDarkGrayHoverEffect:hover
+{
+    background-color: var(--light_gray);
+}
 @media screen and (max-width: 1025px) {
   :root {
     /* font family */
