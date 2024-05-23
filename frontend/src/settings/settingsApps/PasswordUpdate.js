@@ -48,15 +48,11 @@ function PasswordUpdate() {
                 <input type="password" placeholder='Enter New Password' className='inputEle' name='newPwd' onChange={handleChage} />
                 <input type="password" placeholder='Confirm New Password' className='inputEle' name='confirmNewPwd' onChange={handleChage} />
 
-                <button type='submit' className='defaultBtn buttonWithIcon lightGreenBg svgWhite' onClick={handlePwdChange}>Update <MdEast /> </button>
+                <button type='submit' className='addGreenHoverEffect defaultBtn buttonWithIcon lightGreenBg svgWhite' onClick={handlePwdChange}>Update <MdEast /> </button>
 
             </form>
             <div className="otherOptions">
-                <Link><button className='defaultBtn buttonWithIcon darkGrayBg svgWhite' onClick={() => navigate(-1)}>
-                    Go Back <RiArrowGoBackFill />
-                </button></Link>
-
-                <Link to='/profile'><button className='defaultBtn buttonWithIcon svgWhite lightRedBg'>
+                <Link to='/profile'><button className='addRedHoverEffect defaultBtn buttonWithIcon svgWhite lightRedBg' onClick={() => navigate(-1)}>
                     Cancel <MdOutlineCancelScheduleSend />
                 </button></Link>
 

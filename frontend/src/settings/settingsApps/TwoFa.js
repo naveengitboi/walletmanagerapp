@@ -34,7 +34,7 @@ function TwoFa() {
                 </p>
                 <div className="mobNumber">
                     <input type="text" placeholder='Enter Mobile Number' className='inputEle' name='phNum' onChange={handleChage} />
-                    <button className='defaultBtn' onClick={(e) => e.preventDefault()}>SEND</button>
+                    <button className='defaultBtn addHoverEffect' onClick={(e) => e.preventDefault()}>SEND</button>
                 </div>
                 <input type="text" placeholder='Enter OTP' className='inputEle' name='enterOtp' onChange={handleChage} />
                 <p className='tinyText'>Enter a 4digit security pin and please keep it safe and do not share with anyone else!</p>

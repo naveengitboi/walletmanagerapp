@@ -22,10 +22,34 @@
   text-align: center;
   outline: none;
   padding: 0.75rem;
+  box-shadow: 0 1px 3px rgb(218, 218, 218);
 }
+
+.amtInputContainer #fromType {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  outline: none;
+  padding: 0.75rem;
+  box-shadow: 0 1px 3px rgb(218, 218, 218);
+  font-family: var(--sora);
+}
+
+.amtInputContainer #fromType option {
+  font-family: var(--sora);
+  padding: 0.5rem 0;
+}
+
 .amtInputContainer .green {
   color: var(--dark_green);
 }
 .amtInputContainer .red {
   color: var(--dark_red);
+}
+
+@media screen and (max-width: 1025px) {
+  .addMoneyTypeContainer {
+    padding: 1rem;
+  }
 }

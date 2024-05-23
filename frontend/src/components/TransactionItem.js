@@ -13,7 +13,7 @@ function TransactionItem() {
                 <p className='pMedium'>12/02/24</p>
                 <p className='pMedium'>Paytm</p>
                 <p className='pMedium'>550</p>
-                <button className='actionBtn defaultBtn'>Remove</button>
+                <button className='actionBtn defaultBtn '>Remove</button>
             </div>
         </>
     )
