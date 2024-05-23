@@ -8,16 +8,14 @@
   justify-content: center;
   flex-direction: column;
 }
-.profilePage .gradientProfile
-{
+.profilePage .gradientProfile {
   --size: 180px;
   width: var(--size);
   height: var(--size);
   margin-bottom: 1rem;
   transition: all 0.5s ease;
 }
-.profilePage .gradientProfile:hover
-{
+.profilePage .gradientProfile:hover {
   border-radius: 5%;
 }
 .profileEdits {
@@ -28,18 +26,16 @@
   width: 100%;
 }
 
-
 .editSection {
   display: flex;
   justify-content: space-between;
   box-shadow: 0 2px 0px rgb(201, 201, 201);
 }
-.editIcon, .editSection .pMedium
-{
+.editIcon,
+.editSection .pMedium {
   padding: 1rem 1.85rem;
-   border-top-right-radius: var(--bradius);
+  border-top-right-radius: var(--bradius);
 }
-
 
 .editSection .editIcon svg {
   font-size: var(--svg_size);
@@ -70,4 +66,52 @@
 
 .settingsSection {
   flex-grow: 1;
+}
+
+.settingsSection .settingsHeader
+{
+  display: none;
+}
+@media screen and (max-width: 1025px) {
+  .profileSection {
+    width: 42%;
+    padding: 0 1rem;
+  }
+  .profilePage .gradientProfile {
+    --size: 150px;
+  }
+}
+@media screen and (max-width: 769px) {
+  .profileSection
+  {
+    width: 48%;
+  }
+  .userValues {
+    padding: 0rem 0.85rem;
+  }
+}
+
+
+@media screen and (max-width: 426px) {
+
+  .profilePage
+  {
+    flex-direction: column;
+  }
+  .profileSection
+  {
+    width: 100%;
+  }
+  .userValues {
+    padding: 0rem 0.85rem;
+  }
+  .settingsSection
+  {
+    padding: 3rem 0;
+  }
+    .settingsHeader
+  {
+    display: block;
+    padding-left: 5vw;
+  }
 }

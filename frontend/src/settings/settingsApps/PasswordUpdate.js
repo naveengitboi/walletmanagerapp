@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import { MdEast } from "react-icons/md";
-import { RiArrowGoBackFill } from "react-icons/ri";
 import { MdOutlineCancelScheduleSend } from "react-icons/md";
 import '../settingsCss/PasswordUpdate.css'
 import '../../pagesCss/Register.css'

@@ -44,3 +44,12 @@
   background-color: #b4f2e6;
   color: rgb(176, 176, 176);
 }
+
+@media screen and (max-width: 1025px) {
+  .registerPage form,
+  .otherOptions {
+    display: flex;
+    flex-direction: column;
+    min-width: 35vw;
+  }
+}

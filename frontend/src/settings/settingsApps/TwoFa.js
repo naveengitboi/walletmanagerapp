@@ -4,6 +4,7 @@ import { MdEast } from "react-icons/md";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import { MdOutlineCancelScheduleSend } from "react-icons/md";
 import '../settingsCss/PasswordUpdate.css'
+import '../../pagesCss/Register.css'
 
 function TwoFa() {
 

@@ -27,7 +27,7 @@ function Dashboard() {
       <div className="dashboardFooter">
         <div className="dbfLeft">
           <div className="addMoneyContainer">
-            <div className="amcNavbar">
+            <div className="amcNavbar pLarge">
               <Link to='/received'>Received</Link>
               <Link to='/paid'>Paid</Link>
               <Link to='/paid'>Debt</Link>
@@ -35,8 +35,10 @@ function Dashboard() {
             <Outlet />
           </div>
 
-          <div className="transactionsHistoryContainer">
-            <RecentHistory />
+          <div className='trsHCOuterContainer'>
+            <div className="transactionsHistoryContainer">
+              <RecentHistory />
+            </div>
           </div>
         </div>
 

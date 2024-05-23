@@ -37,14 +37,12 @@
   text-align: center;
   padding: 0.8rem;
   border: 1px solid rgb(240, 240, 240);
-    
 }
 
-.amcNavbar a:active
-{
+.amcNavbar a:active {
   background-color: rgb(213, 213, 213);
 }
-.transactionsHistoryContainer {
+.trsHCOuterContainer {
   width: 100%;
   margin: 1rem 0 0;
   padding: 0.85rem 1rem;
@@ -61,5 +59,29 @@
   .dashboardHeader {
     overflow: scroll;
   }
+}
 
+@media screen and (max-width: 769px) {
+  .dashboardFooter {
+    flex-direction: column;
+  }
+  .dbfLeft {
+    width: 100%;
+    padding: 2rem 4vw;
+  }
+  .transactionsHistoryContainer {
+    padding: 1rem 0;
+    border-radius: 0.25rem;
+  }
+  .analyticsContainer {
+    background-color: white;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 543px) {
+  .transactionsHistoryContainer  {
+    overflow-x: scroll;
+    border: 1px solid rgb(241, 179, 179);
+  }
 }

@@ -20,3 +20,30 @@
 .totalValues .pLarge:hover {
   background-color: rgb(238, 238, 238);
 }
+
+@media screen and (max-width: 543px) {
+  .itemsCollectionSection {
+    overflow-x: scroll;
+   border-right:4px solid rgb(179, 179, 179);
+  }
+  .tsPageHeader {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1rem;
+
+  }
+
+  .totalValues
+  {
+    width: 100%;
+    justify-content: space-around;
+    margin:0 0 0.5rem;
+  }
+  .tsPageHeader .downLoadBtn
+  {
+    width: 100%;
+    display: flex;
+    justify-content:end;
+    
+  }
+}

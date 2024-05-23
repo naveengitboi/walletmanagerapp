@@ -186,7 +186,11 @@ body {
   background-image: url("/public/bg_svg.svg");
   background-blend-mode: color;
   /* background-color: ; */
-  background-image: radial-gradient(rgba(174, 132, 52, 0.341), rgba(213, 255, 215, 0.166)), url("/public/bg_svg.svg");
+  background-image: radial-gradient(
+      rgba(174, 132, 52, 0.341),
+      rgba(213, 255, 215, 0.166)
+    ),
+    url("/public/bg_svg.svg");
   background-size: cover;
 
   overflow-x: hidden;
@@ -201,12 +205,13 @@ body::-webkit-scrollbar,
 
 .appContainer {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
 .routesContainer {
-  padding: 10vh 2rem;
+  padding: 10vh 1rem 3vh;
+  width: 100%;
   min-height: 90vh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -224,7 +229,7 @@ body::-webkit-scrollbar,
 .insideRoutesContainer {
   padding: 2rem;
   border-radius: 0.85rem;
-  min-width: 90vw;
+  width: 100%;
   min-height: 100%;
 }
 .addingDotAnimation {
@@ -257,7 +262,9 @@ body::-webkit-scrollbar,
   border-radius: 50%;
   background-image: linear-gradient(rgb(255, 165, 193), rgb(169, 235, 251));
 }
-.addHoverEffect, .addGreenHoverEffect, .addRedHoverEffect .addDarkGrayHoverEffect {
+.addHoverEffect,
+.addGreenHoverEffect,
+.addRedHoverEffect .addDarkGrayHoverEffect {
   transition: all 0.15s ease;
   cursor: pointer;
 }
@@ -268,13 +275,11 @@ body::-webkit-scrollbar,
 .addGreenHoverEffect:hover {
   background-color: var(--dark_green);
 }
-.addRedHoverEffect:hover
-{
-    background-color: var(--dark_red);
+.addRedHoverEffect:hover {
+  background-color: var(--dark_red);
 }
-.addDarkGrayHoverEffect:hover
-{
-    background-color: var(--light_gray);
+.addDarkGrayHoverEffect:hover {
+  background-color: var(--light_gray);
 }
 @media screen and (max-width: 1025px) {
   :root {
@@ -310,7 +315,6 @@ body::-webkit-scrollbar,
   }
 }
 
-
 @media screen and (max-width: 1025px) {
   :root {
     /* font family */
@@ -343,8 +347,99 @@ body::-webkit-scrollbar,
     padding: 0.5rem;
   }
 
-  .hLarge
-  {
+  .hLarge {
     font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  :root {
+    /* font family */
+    --sora: "Sora", "Space Grotesk", sans-serif;
+    --monte: "Montserrat", "Inter", sans-serif;
+    /* font size */
+    --h_50px: 2rem;
+    --h_32px: 1.25rem;
+    --h_26px: 1.15rem;
+    --p_20px: 0.825rem;
+    --p_16px: 0.75rem;
+    --p_14px: 0.718rem;
+    --tiny_text: 0.65rem;
+    --svg_size: 1.25rem;
+  }
+
+  .defaultBtn {
+    padding: 0.75rem;
+  }
+  .buttonWithIcon {
+    padding: 0.75rem 1.1rem;
+  }
+  .routesContainer {
+    padding: 10vh 0.25rem;
+  }
+  .inputEle {
+    padding: 0.85rem;
+    border-radius: 0.25rem;
+  }
+  .insideRoutesContainer {
+    padding: 0.5rem;
+  }
+
+  .hLarge {
+    font-size: 1.8rem;
+  }
+
+  .appContainer {
+    display: flex;
+    height: 100vh;
+    flex-direction: column-reverse;
+    
+  }
+}
+
+
+
+@media screen and (max-width: 426px) {
+  :root {
+    /* font family */
+    --sora: "Sora", "Space Grotesk", sans-serif;
+    --monte: "Montserrat", "Inter", sans-serif;
+    /* font size */
+    --h_50px: 1.85rem;
+    --h_32px: 1.12rem;
+    --h_26px: 1rem;
+    --p_20px: 0.825rem;
+    --p_16px: 0.75rem;
+    --p_14px: 0.68rem;
+    --tiny_text: 0.5rem;
+    --svg_size: 1.25rem;
+  }
+
+  .defaultBtn {
+    padding: 0.75rem;
+  }
+  .buttonWithIcon {
+    padding: 0.75rem 1.1rem;
+  }
+  .routesContainer {
+    padding: 10vh 0.25rem;
+  }
+  .inputEle {
+    padding: 0.85rem;
+    border-radius: 0.25rem;
+  }
+  .insideRoutesContainer {
+    padding: 0.5rem;
+  }
+
+  .hLarge {
+    font-size: 1.8rem;
+  }
+
+  .appContainer {
+    display: flex;
+    height: 100vh;
+    flex-direction: column-reverse;
+    
   }
 }
