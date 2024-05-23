@@ -17,8 +17,16 @@ dotenv.config()
 app.use(cookieParser('wmanagerapp'))
 app.use(cors(
     {
-        origin: ["http://localhost:3000","https://walletmanagerapp.vercel.app"],
+        origin: ["http://localhost:3000", "https://walletmanagerapp.vercel.app"],
         credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+        allowedHeaders: [
+            "Origin",
+            "Content-Type",
+            "Accept",
+            "Authorization",
+            "X-Request-With",
+        ],
     }
 ))
 // app.use(express.urlencoded({ extended: false }));
@@ -32,11 +40,13 @@ const dbConnect = async () => {
 
 
 //routes
-
+app.get('/', (req,res) => {
+    res.send('WalletManager')
+})
 app.use('/api', userRouter)
 app.use('/api', transactionRouter)
 app.all('*', (req, res, next) => {
-    const err = new errorHandler( `Cannot find this ${req.originalUrl} page`,404)
+    const err = new errorHandler(`Cannot find this ${req.originalUrl} page`, 404)
     next(err)
 })
 
