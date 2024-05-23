@@ -40,7 +40,9 @@ const dbConnect = async () => {
 
 
 //routes
-
+app.get('/', (req,res) => {
+    res.send('WalletManager')
+})
 app.use('/api', userRouter)
 app.use('/api', transactionRouter)
 app.all('*', (req, res, next) => {
