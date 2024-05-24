@@ -11,6 +11,7 @@ import errorHandler from './utils/customError.js'
 import userRouter from './routes/user.route.js'
 import transactionRouter from './routes/transaction.route.js'
 //middlewares
+//"https://walletmanagerapp.vercel.app"
 const app = express()
 app.use(express.json())
 dotenv.config()
@@ -19,18 +20,11 @@ app.use(cors(
     {
         origin: ["http://localhost:3000", "https://walletmanagerapp.vercel.app"],
         credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-        allowedHeaders: [
-            "Origin",
-            "Content-Type",
-            "Accept",
-            "Authorization",
-            "X-Request-With",
-        ],
+  
     }
 ))
-// app.use(express.urlencoded({ extended: false }));
 
+// app.use(express.urlencoded({ extended: false }));
 
 //db connection
 const dbConnect = async () => {
