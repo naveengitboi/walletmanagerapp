@@ -23,6 +23,7 @@ const registerUser = asyncErrorHandler(async (req, res) => {
 
 //login
 const loginUser = asyncErrorHandler(async (req, res) => {
+  console.log(req)
   const userData = {
     user_name: req.body.username,
     password: req.body.password,
