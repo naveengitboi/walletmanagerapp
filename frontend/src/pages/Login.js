@@ -29,12 +29,14 @@ function Login() {
     } else if (userDetails.tc === false) {
       alert("Please accept tand c");
     } else {
+      
       const resp = await api.post("/login", userDetails, {
         withCredentials:true,
         credentials: 'include',
-  
       })
       .catch((err) => console.log(err.response));
+
+      
       if(resp.status === 200){
         dispatch(addUserExist())
         navigate('/');
