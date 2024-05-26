@@ -14,7 +14,7 @@ function Header() {
   let location = useLocation();
   useEffect(() => {
     const closeMessagehandler = (e) => {
-      if (!toggleRef.current.contains(e.target) ){
+      if (!toggleRef.current.contains(e.target)) {
         setToggle(false)
       }
     }
@@ -33,31 +33,32 @@ function Header() {
         <Link to="/">
           <h1 className="hMedium">WM</h1>
         </Link>
-        <p className="pMedium">{location.pathname.slice(1)}</p>
+        {currentUser && <p className="pMedium">{location.pathname.slice(1)}</p>}
       </div>
 
       <div className="infoNavContainer">
         <div className="notifications addHoverEffect" ref={toggleRef} >
           <MdCampaign onClick={() => setToggle(!toggle)} />
-          
-            {toggle && <MessageModel/>}
-      
+
+          {toggle && <MessageModel />}
+
         </div>
         <div className="profileCircle">
           {!currentUser ? (
             <div className="actionsButtonsHeader">
               <Link to="/register" className="defaultBtn lightGraybg">
-              Register
-            </Link>
+                Register
+              </Link>
               <Link to="/login" className="defaultBtn lightGreenBg">
                 Login
               </Link>
             </div>
-            
+
           ) : (
-            <Link to="/profile">
-              <div className="gradientProfile"></div>
-            </Link>
+              <Link to="/profile">
+                <div className="gradientProfile"></div>
+              </Link>
+         
           )}
         </div>
       </div>

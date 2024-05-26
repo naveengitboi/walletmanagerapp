@@ -204,8 +204,10 @@ body::-webkit-scrollbar,
 }
 
 .appContainer {
-  display: flex;
-  min-height: 100vh;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 80px auto;
+  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -281,6 +283,8 @@ body::-webkit-scrollbar,
 .addDarkGrayHoverEffect:hover {
   background-color: var(--light_gray);
 }
+
+
 @media screen and (max-width: 1025px) {
   :root {
     /* font family */
@@ -440,6 +444,5 @@ body::-webkit-scrollbar,
     display: flex;
     height: 100vh;
     flex-direction: column-reverse;
-    
   }
 }

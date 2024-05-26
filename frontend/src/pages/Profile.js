@@ -7,11 +7,11 @@ import api from '../api/axios';
 
 function Profile() {
     const currentUser = {
-        first_name: '',
-        last_name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
-        account_numbers: ['']
+        accountNumbers: ['']
     }
     const [userDetails, setuserDetails] = useState(currentUser)
     const [giveEditAccess, setGiveEditAccess] = useState(false)
@@ -22,8 +22,9 @@ function Profile() {
                 withCredentials: true,
                 credentials: 'include',
             })
+            // console.log(userData)
             const output = userData.data.output
-            setuserDetails(output)
+            setuserDetails(output);
 
         }
         getOwnerDetails()
@@ -64,13 +65,13 @@ function Profile() {
                     <div className="userInfo">
                         <div className="userValues">
                             <p className='tinyText'>First Name</p>
-                            <input type="text" className='inputEle userValueInput' value={userDetails.first_name}
-                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="first_name" />
+                            <input type="text" className='inputEle userValueInput' value={userDetails.firstName}
+                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="firstName" />
                         </div>
                         <div className="userValues">
                             <p className='tinyText'>Last Name</p>
-                            <input type="text" className='inputEle userValueInput' value={userDetails.last_name}
-                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="last_name" />
+                            <input type="text" className='inputEle userValueInput' value={userDetails.lastName}
+                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="lastName" />
                         </div>
                         <div className="userValues">
                             <p className='tinyText'>Email</p>
@@ -85,7 +86,7 @@ function Profile() {
                         <div className="userValues">
                             <p className='tinyText'>Account Number</p>
                             <input type="text" className='inputEle userValueInput' value={''}
-                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="account_numbers" />
+                                onChange={changeUserData} disabled={giveEditAccess ? "" : "disabled"} name="accountNumbers" />
                             {/* {
                                 userDetails.account_numbers?.map((num, idx) => {
                                     return (<p className='tinyText' key={idx}>{num}</p>)

@@ -60,7 +60,7 @@ const getAllUsers = asyncErrorHandler(async (req, res) => {
 //get one user
 const getOwnUser = asyncErrorHandler(async (req, res) => {
   const id = req.userPayload;
-  // console.log(id)
+//  console.log(req)
   const user = await userModel.findById(id);
   res.status(200).json({ success: true, output: user });
 });
