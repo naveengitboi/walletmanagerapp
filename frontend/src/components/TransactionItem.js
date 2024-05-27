@@ -4,10 +4,10 @@ function TransactionItem({ transaction, itemDeleteHanlder }) {
 
     let date = new Date(transaction.transDate)
     date = date.toLocaleDateString('en-GB')
-    
+
     return (
         <>
-            
+
             <div className='tsItem'>
                 <div className="userProfile">
                     <img src="/profile.png" alt="user profile" />

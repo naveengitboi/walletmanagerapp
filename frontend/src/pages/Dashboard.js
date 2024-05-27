@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import DashboardHeader from '../components/DashboardHeader'
 import { Link, Outlet } from 'react-router-dom'
 import '../pagesCss/Dashboard.css'
 import Analytics from '../components/Analytics'
 import RecentHistory from '../components/RecentHistory'
-
+import { useSelector } from 'react-redux'
 function Dashboard() {
+  const amountSelector = useSelector((state) => state.transaction)
+
 
 
   return (
     <div className='page'>
       <div className="dashboardHeader">
-        <DashboardHeader />
+        <DashboardHeader  />
         <DashboardHeader />
         <DashboardHeader />
         <DashboardHeader />

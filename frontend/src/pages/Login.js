@@ -9,7 +9,7 @@ function Login() {
 
   const dispatch = useDispatch();
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [userDetails, setUserDetails] = useState({
     userName: "",

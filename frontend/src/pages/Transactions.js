@@ -3,19 +3,12 @@ import TransactionItem from '../components/TransactionItem'
 import '../pagesCss/Transactions.css'
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import api from '../api/axios';
-
-export let transactionArray = []
-
+import { useDispatch, useSelector } from "react-redux";
+import { addCreditAmount, addDebitAmount } from "../Redux/TransactionSlice.js";
 function Transactions() {
+    const dispatch = useDispatch()
+    const amountSelector = useSelector((state) => state.transaction)
 
-    const [amounts, setAmounts] = useState({
-        credit:0,
-        debit:0,
-        total : 0,
-        totalTransactions: 0
-    })
-
-    
 
     const [transactions, setTransactions] = useState([]);
     const [deleteFunc, setDeleteFunc] = useState(true)
@@ -24,10 +17,14 @@ function Transactions() {
             let allTransactions = await api.get('/transaction/history', {
                 withCredentials: true
             })
-            allTransactions = allTransactions.data.output
-            transactionArray = allTransactions
-            setTransactions(allTransactions);
 
+            let history = allTransactions.data.output.history
+            let amounts = allTransactions.data.output.amounts;
+            console.log(amounts)
+            dispatch(addCreditAmount(amounts.credit))
+            dispatch(addDebitAmount(amounts.debit))
+
+            setTransactions(history);
         }
         getAllTransactions()
     }, [deleteFunc])
@@ -46,9 +43,9 @@ function Transactions() {
         <div className='tsPageContainer'>
             <div className='tsPageHeader'>
                 <div className="totalValues">
-                    <p className='pLarge darkGreen'>{amounts.credit}/-</p>
-                    <p className='pLarge darkRed'>{amounts.debit}/-</p>
-                    <p className='pLarge darkGray'>{amounts.total}/-</p>
+                    <p className='pLarge darkGreen'>{amountSelector.creditAmount}/-</p>
+                    <p className='pLarge darkRed'>{amountSelector.debitAmount}/-</p>
+                    <p className='pLarge darkGray'>{amountSelector.creditAmount + amountSelector.debitAmount}/-</p>
                 </div>
 
                 <div className="downLoadBtn">

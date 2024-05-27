@@ -20,45 +20,36 @@ const transaction = asyncErrorHandler(async (req, res) => {
 
 
 const getAllTrans = asyncErrorHandler(async (req, res) => {
-  const {type, through} = req.query
-
-  const id = req.userPayload;
-  console.log("id" ,req.userPayload)
-  const history = await TransactionModel.find({
-    ownerId: id
-  });
-  // console.log(history)
-  res.status(200).json({ success: true, output: history });
-});
-
-const getAmounts = asyncErrorHandler(async (req, res) => {
+  const { type, through } = req.query
   let amounts = {
     credit: 0,
     debit: 0,
-    total : 0,
+    total: 0,
   }
+  
   const id = req.userPayload;
+  console.log("id", req.userPayload)
+  //history
   const history = await TransactionModel.find({
     ownerId: id
-  });
+  }).sort({ transDate: -1 });
 
+  //amounts
   history.map((transaction) => {
     amounts.total += transaction.amount
     if (transaction.transType === 'received') {
       amounts.credit += transaction.amount
     }
     else {
-     amounts.debit += transaction.amount
+      amounts.debit += transaction.amount
     }
-
   })
+  // console.log(history)
+  res.status(200).json({ success: true, output: { history, amounts } });
+});
 
-  res.status(200).json({
-    success: true,
-    output: amounts
-  })
 
-})
+
 
 const deleteTrans = asyncErrorHandler(async (req, res) => {
   await TransactionModel.findOneAndDelete({
@@ -103,4 +94,4 @@ const updateTrans = asyncErrorHandler(async (req, res) => {
 
 
 
-export { transaction, getAllTrans, deleteTrans, updateTrans, getAmounts };
+export { transaction, getAllTrans, deleteTrans, updateTrans };
