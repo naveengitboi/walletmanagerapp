@@ -3,12 +3,16 @@ import asyncErrorHandler from "../utils/asynErrorHandler.js";
 
 //transaction
 const transaction = asyncErrorHandler(async (req, res) => {
+  console.log("req.body", req.body);
   const id = req.userPayload;
-  const query = req.query;
+  let { type } = req.query;
+  console.log("type", type);
+  if (type === undefined) { type = 'paid' }
+  console.log("payload id", id);
   const modifiedData = {
     ...req.body,
     ownerId: id,
-    transType: query.type,
+    transType: type,
     fromImg: "naveen.logo.png",
   };
   const newTrans = new TransactionModel(modifiedData);
@@ -18,16 +22,11 @@ const transaction = asyncErrorHandler(async (req, res) => {
 });
 
 const getAllTrans = asyncErrorHandler(async (req, res) => {
-  const query = req.query
- 
+  const {type, through} = req.query
+
   const id = req.userPayload;
   const history = await TransactionModel.find({
-    $and:[
-      {
-        ownerId: id,
-        through: query.through
-      }
-    ]
+    ownerId: id
   });
   res.status(200).json({ success: true, output: history });
 });
@@ -71,5 +70,8 @@ const updateTrans = asyncErrorHandler(async (req, res) => {
     output: "updated data",
   });
 });
+
+
+
 
 export { transaction, getAllTrans, deleteTrans, updateTrans };

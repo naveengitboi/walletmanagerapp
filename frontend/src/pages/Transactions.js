@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TransactionItem from '../components/TransactionItem'
 import '../pagesCss/Transactions.css'
 import { AiOutlineCloudDownload } from "react-icons/ai";
+import axios from 'axios';
 function Transactions() {
+
+    const getAllTransactions = async () => {
+        const allTransactions = await axios.get('/history')
+
+        return allTransactions;
+    }
+
+    const [transactions, setTransactions] = useState([]);
+
+    useEffect(() => {
+        const history = getAllTransactions()
+        setTransactions(history);
+    }, [])
+
     return (
         <div className='tsPageContainer'>
             <div className='tsPageHeader'>
@@ -26,10 +41,11 @@ function Transactions() {
                     <p className='pSmall'>Amount</p>
                     <p className='pSmall'>Action</p>
                 </div>
-                <TransactionItem />
-                <TransactionItem />
-                <TransactionItem />
-                <TransactionItem />
+                {
+                    transactions.map((transaction) => {
+                        return <TransactionItem key={transaction._id} transaction={transaction} />
+                    })
+                }
             </div>
         </div>
     )

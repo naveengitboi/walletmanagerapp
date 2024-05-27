@@ -23,7 +23,7 @@ const verifyToken = async (req, res, next) => {
 
 const generateToken = async (res, payload) => {
     const token = jwt.sign(payload, process.env.SECRET_KEY);
-    console.log(token)
+    console.log("toke, ", token)
     res.cookie('token', token, {
         httpOnly: true, // The cookie only accessible by the web server
         signed: true // Indicates if the cookie should be signed
