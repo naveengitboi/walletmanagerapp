@@ -8,24 +8,32 @@ function AddMoneyType(props) {
 
     const location = useLocation()
     let path = location.pathname.slice(1);
-    if (path == '') {
+    if (path === '') {
         path = 'received'
     }
     const [transDetails, setTransDetails] = useState({
         transType: path,
         through: 'paytm',
     })
-
+    
     const inputHandler = (e) => {
 
-        setTransDetails({ ...transDetails, [e.target.name]: e.target.value, tramsType: path })
+        setTransDetails({ ...transDetails, [e.target.name]: e.target.value, transType: path })
     }
-
     const addTransButton = async () => {
-        await api.post('/transaction/addmoney', { 
-            ...transDetails, amount: parseInt(transDetails.amount) }, {
+        await api.post('/transaction/addmoney', {
+            ...transDetails, amount: parseInt(transDetails.amount)
+        }, {
             withCredentials: true
         })
+    }
+    const resetHandler = () => {
+        setTransDetails(
+            {
+                transType: path,
+                through: 'paytm',
+            }
+        )
     }
 
     return (
@@ -52,7 +60,7 @@ function AddMoneyType(props) {
             <button className={props.type.btnColorCode ? 'lightGreenBg defaultBtn' : 'lightGreenBg defaultBtn lightRedBg'} onClick={addTransButton} >{props.type.btn}</button>
 
 
-            <button className='defaultBtn darkRed'>Reset</button>
+            <button className='defaultBtn darkRed' onClick={resetHandler}>Reset</button>
 
 
         </div>

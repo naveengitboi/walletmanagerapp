@@ -3,21 +3,35 @@ import TransactionItem from '../components/TransactionItem'
 import '../pagesCss/Transactions.css'
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import api from '../api/axios';
+
+export let transactionArray = []
+
 function Transactions() {
 
-    const getAllTransactions = async () => {
-        let allTransactions = await api.get('/transaction/history', {
-            withCredentials: true
-        })
-        allTransactions = allTransactions.data.output
-        setTransactions(allTransactions);
-    }
+    const [amounts, setAmounts] = useState({
+        credit:0,
+        debit:0,
+        total : 0,
+        totalTransactions: 0
+    })
+
+    
 
     const [transactions, setTransactions] = useState([]);
     const [deleteFunc, setDeleteFunc] = useState(true)
     useEffect(() => {
+        const getAllTransactions = async () => {
+            let allTransactions = await api.get('/transaction/history', {
+                withCredentials: true
+            })
+            allTransactions = allTransactions.data.output
+            transactionArray = allTransactions
+            setTransactions(allTransactions);
+
+        }
         getAllTransactions()
     }, [deleteFunc])
+
 
     const itemDeleteHanlder = async (e, historyItemId) => {
         console.log(historyItemId)
@@ -32,9 +46,9 @@ function Transactions() {
         <div className='tsPageContainer'>
             <div className='tsPageHeader'>
                 <div className="totalValues">
-                    <p className='pLarge darkGreen'>70,000/-</p>
-                    <p className='pLarge darkRed'>20,000/-</p>
-                    <p className='pLarge darkGray'>90,000/-</p>
+                    <p className='pLarge darkGreen'>{amounts.credit}/-</p>
+                    <p className='pLarge darkRed'>{amounts.debit}/-</p>
+                    <p className='pLarge darkGray'>{amounts.total}/-</p>
                 </div>
 
                 <div className="downLoadBtn">

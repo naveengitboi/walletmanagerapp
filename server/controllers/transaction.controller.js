@@ -5,13 +5,11 @@ import asyncErrorHandler from "../utils/asynErrorHandler.js";
 const transaction = asyncErrorHandler(async (req, res) => {
   console.log("req.body", req.body);
   const id = req.userPayload;
-  let { type } = req.query;
-  if (type === undefined) { type = 'paid' }
+
   console.log("payload id", id);
   const modifiedData = {
     ...req.body,
     ownerId: id,
-    transType: type,
     fromImg: "naveen.logo.png",
   };
   const newTrans = new TransactionModel(modifiedData);
@@ -19,6 +17,7 @@ const transaction = asyncErrorHandler(async (req, res) => {
   await newTrans.save();
   res.status(200).json({ success: true, output: "Added successfully" });
 });
+
 
 const getAllTrans = asyncErrorHandler(async (req, res) => {
   const {type, through} = req.query
@@ -31,6 +30,35 @@ const getAllTrans = asyncErrorHandler(async (req, res) => {
   // console.log(history)
   res.status(200).json({ success: true, output: history });
 });
+
+const getAmounts = asyncErrorHandler(async (req, res) => {
+  let amounts = {
+    credit: 0,
+    debit: 0,
+    total : 0,
+  }
+  const id = req.userPayload;
+  const history = await TransactionModel.find({
+    ownerId: id
+  });
+
+  history.map((transaction) => {
+    amounts.total += transaction.amount
+    if (transaction.transType === 'received') {
+      amounts.credit += transaction.amount
+    }
+    else {
+     amounts.debit += transaction.amount
+    }
+
+  })
+
+  res.status(200).json({
+    success: true,
+    output: amounts
+  })
+
+})
 
 const deleteTrans = asyncErrorHandler(async (req, res) => {
   await TransactionModel.findOneAndDelete({
@@ -75,4 +103,4 @@ const updateTrans = asyncErrorHandler(async (req, res) => {
 
 
 
-export { transaction, getAllTrans, deleteTrans, updateTrans };
+export { transaction, getAllTrans, deleteTrans, updateTrans, getAmounts };
