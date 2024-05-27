@@ -3,8 +3,8 @@ import axios from 'axios'
 //'https://walletmanagerapp-api.vercel.app/api' (prod)
 
 const api = axios.create({
-    // baseURL: 'https://walletmanagerapp-api.vercel.app/api',
-    baseURL: 'http://localhost:3001/api',
+    baseURL: 'https://walletmanagerapp-api.vercel.app/api',
+    // baseURL: 'http://localhost:3001/api',
     headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",

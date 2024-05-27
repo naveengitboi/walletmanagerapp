@@ -1,29 +1,17 @@
-.tsItemsHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.25rem 0.85rem;
-}
-.tsItemsHeader .pSmall {
-  text-align: center;
-  color: var(--light_gray);
-  font-weight: 500;
-}
 .tsItem {
   background: white;
   padding: 0.5rem 0.85rem;
   display: grid;
-  grid-template-columns: 50px  repeat(8, 1fr);
+  grid-template-columns: 50px repeat(8, 1fr);
   margin: 0.5rem 0;
 }
-.tsItem p 
-{
+.tsItem p {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.description{
+.description {
   grid-column: span 2;
 }
 .tsItem .userProfile {
@@ -66,16 +54,18 @@
 }
 
 @media screen and (max-width: 769px) {
-    .tsItem .userProfile
-    {
-      width: 30px;
-      height: 30px;
-    }
+  .tsItem .userProfile {
+    width: 30px;
+    height: 30px;
+  }
+
+  .tsItem {
+    grid-template-columns: 40px repeat(8, 1fr);
+  }
 }
 
-@media screen and (max-width: 543px) {
-    .tsItem 
-    {
-      min-width: 120vw;
-    }
+@media screen and (max-width: 590px) {
+  .tsItem {
+    min-width: 130vw;
+  }
 }

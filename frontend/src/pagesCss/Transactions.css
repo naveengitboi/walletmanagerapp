@@ -37,7 +37,12 @@
 }
 
 
-@media screen and (max-width: 543px) {
+@media screen and (max-width: 590px) {
+  .tsItemsHeader 
+    {
+      min-width: 130vw;
+    }
+
   .itemsCollectionSection {
     overflow-x: scroll;
     border-right: 4px solid rgb(179, 179, 179);
