@@ -25,9 +25,11 @@ const getAllTrans = asyncErrorHandler(async (req, res) => {
   const {type, through} = req.query
 
   const id = req.userPayload;
+  console.log("id" ,req.userPayload)
   const history = await TransactionModel.find({
     ownerId: id
   });
+  // console.log(history)
   res.status(200).json({ success: true, output: history });
 });
 

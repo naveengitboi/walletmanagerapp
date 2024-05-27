@@ -21,29 +21,41 @@
   background-color: rgb(238, 238, 238);
 }
 
+.itemsCollectionSection .tsItemsHeader {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+}
+.tsItemsHeader p 
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fromToHeader{
+  grid-column: span 2;
+}
+
+
 @media screen and (max-width: 543px) {
   .itemsCollectionSection {
     overflow-x: scroll;
-   border-right:4px solid rgb(179, 179, 179);
+    border-right: 4px solid rgb(179, 179, 179);
   }
   .tsPageHeader {
     display: flex;
     flex-direction: column;
     margin: 0 0 1rem;
-
   }
 
-  .totalValues
-  {
+  .totalValues {
     width: 100%;
     justify-content: space-around;
-    margin:0 0 0.5rem;
+    margin: 0 0 0.5rem;
   }
-  .tsPageHeader .downLoadBtn
-  {
+  .tsPageHeader .downLoadBtn {
     width: 100%;
     display: flex;
-    justify-content:end;
-    
+    justify-content: end;
   }
 }

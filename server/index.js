@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
     res.send('WalletManager')
 })
 app.use('/api', userRouter)
-app.use('/api', transactionRouter)
+app.use('/api/transaction', transactionRouter)
 app.all('*', (req, res, next) => {
     const err = new errorHandler(`Cannot find this ${req.originalUrl} page`, 404)
     next(err)

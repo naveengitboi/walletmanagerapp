@@ -12,10 +12,19 @@
 .tsItem {
   background: white;
   padding: 0.5rem 0.85rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 100px  repeat(7, 1fr);
   margin: 0.5rem 0;
+}
+.tsItem p 
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fromto{
+  grid-column: span 2;
 }
 .tsItem .userProfile {
   width: 45px;

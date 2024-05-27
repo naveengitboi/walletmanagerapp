@@ -2,21 +2,31 @@ import React, { useEffect, useState } from 'react'
 import TransactionItem from '../components/TransactionItem'
 import '../pagesCss/Transactions.css'
 import { AiOutlineCloudDownload } from "react-icons/ai";
-import axios from 'axios';
+import api from '../api/axios';
 function Transactions() {
 
     const getAllTransactions = async () => {
-        const allTransactions = await axios.get('/history')
-
-        return allTransactions;
+        let allTransactions = await api.get('/transaction/history', {
+            withCredentials: true
+        })
+        allTransactions = allTransactions.data.output
+        setTransactions(allTransactions);
     }
 
     const [transactions, setTransactions] = useState([]);
-
+    const [deleteFunc, setDeleteFunc] = useState(true)
     useEffect(() => {
-        const history = getAllTransactions()
-        setTransactions(history);
-    }, [])
+        getAllTransactions()
+    }, [deleteFunc])
+
+    const itemDeleteHanlder = async (e, historyItemId) => {
+        console.log(historyItemId)
+        await api.delete(`/transaction/delete/${historyItemId}`, {
+            withCredentials: true
+        })
+        setDeleteFunc(prev => !prev)
+    }
+
 
     return (
         <div className='tsPageContainer'>
@@ -34,16 +44,17 @@ function Transactions() {
             <div className="itemsCollectionSection">
                 <div className="tsItemsHeader">
                     <p className='pSmall'>Profile</p>
-                    <p className='pSmall'>from</p>
+                    <p className='pSmall fromToHeader'>from/To</p>
                     <p className='pSmall'>type</p>
                     <p className='pSmall'>Date</p>
                     <p className='pSmall'>Through</p>
                     <p className='pSmall'>Amount</p>
                     <p className='pSmall'>Action</p>
                 </div>
+
                 {
                     transactions.map((transaction) => {
-                        return <TransactionItem key={transaction._id} transaction={transaction} />
+                        return <TransactionItem key={transaction._id} transaction={transaction} itemDeleteHanlder={itemDeleteHanlder} />
                     })
                 }
             </div>
