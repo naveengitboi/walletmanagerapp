@@ -6,36 +6,36 @@ import asyncErrorHandler from "../utils/asynErrorHandler.js";
 //sign in
 const registerUser = asyncErrorHandler(async (req, res) => {
   const userData = req.body;
+  const isUserExists = await userModel.findOne({ userName: userData.userName });
+  if (isUserExists) {
+    res.status(400).json({ success: false, output: "User already exists" })
+    return;
+  }
+
   const salts = 10;
   const hashedPwd = await bcrypt.hash(userData.password, salts);
   const dataModified = {
-    user_name: userData.userName,
-    first_name: userData.firstName,
-    last_name: userData.lastName,
-    email: userData.email,
+    ...userData,
     password: hashedPwd,
   };
   const newUser = new userModel(dataModified);
   const addedUser = await newUser.save();
   generateToken(res, { userId: addedUser._id });
+
   res.send("user added successfully");
+
+
 });
 
 //login
 const loginUser = asyncErrorHandler(async (req, res) => {
-  console.log(req)
-  const userData = {
-    user_name: req.body.username,
-    password: req.body.password,
-  };
 
   const isUserFound = await userModel.findOne({
-    user_name: userData.user_name,
+    userName: req.body.userName,
   });
-
   if (isUserFound) {
     const isMatched = await bcrypt.compare(
-      userData.password,
+      req.body.password,
       isUserFound.password
     );
     if (isMatched) {
@@ -60,7 +60,7 @@ const getAllUsers = asyncErrorHandler(async (req, res) => {
 //get one user
 const getOwnUser = asyncErrorHandler(async (req, res) => {
   const id = req.userPayload;
-  // console.log(id)
+  //  console.log(req)
   const user = await userModel.findById(id);
   res.status(200).json({ success: true, output: user });
 });
@@ -93,7 +93,7 @@ const updatePassword = asyncErrorHandler(async (req, res) => {
   await userModel.findByIdAndUpdate(id, updatedData, {
     new: true,
   });
-  
+
   res.status(200).json({ success: true, output: "updated successfully" });
 
 });

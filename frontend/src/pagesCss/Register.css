@@ -53,3 +53,11 @@
     min-width: 35vw;
   }
 }
+
+@media screen and (max-width:664px) {
+    .registerPage form,
+  .otherOptions {
+    min-width: 60vw;
+
+  }
+}

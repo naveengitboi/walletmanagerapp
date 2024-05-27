@@ -48,15 +48,8 @@ function Register() {
         if (userDetails.confirmPwd !== userDetails.password) {
             alert('Enter Correct passwords')
         } else {
-            const data = {
-                userName: userDetails.userName,
-                email: userDetails.email,
-                firstName: userDetails.firstName,
-                lastName: userDetails.lastName,
-                password: userDetails.password,
-
-            }
-            handleApi(data)
+          
+            handleApi(userDetails)
 
         }
     }

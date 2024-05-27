@@ -1,7 +1,7 @@
 import React from 'react'
 // import Charts from '../components/Charts'
 import '../pagesCss/Analytics.css'
-import TransactionItem from '../components/TransactionItem'
+// import TransactionItem from '../components/TransactionItem'
 
 
 function Analytics() {
@@ -13,7 +13,7 @@ function Analytics() {
             </div>
 
             <div className="historySection">
-                <TransactionItem />
+                {/* <TransactionItem  /> */}
             </div>
 
         </div>

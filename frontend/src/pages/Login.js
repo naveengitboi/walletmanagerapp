@@ -9,10 +9,10 @@ function Login() {
 
   const dispatch = useDispatch();
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [userDetails, setUserDetails] = useState({
-    username: "",
+    userName: "",
     password: "",
     tc: false,
   });
@@ -24,7 +24,7 @@ function Login() {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (userDetails.username === "" || userDetails.password === "") {
+    if (userDetails.userName === "" || userDetails.password === "") {
       alert("Enter correct details or register as new");
     } else if (userDetails.tc === false) {
       alert("Please accept tand c");
@@ -54,7 +54,7 @@ function Login() {
           type="text"
           placeholder="Username"
           className="inputEle"
-          name="username"
+          name="userName"
           onChange={handleChage}
         />
         <input
@@ -68,7 +68,7 @@ function Login() {
           <input
             type="checkbox"
             id="acceptT&C"
-            onClick={(e) => {
+            onClick={() => {
               setUserDetails((prev) => ({ ...prev, tc: !prev.tc }));
             }}
           />

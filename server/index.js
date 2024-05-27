@@ -12,6 +12,7 @@ import userRouter from './routes/user.route.js'
 import transactionRouter from './routes/transaction.route.js'
 //middlewares
 //"https://walletmanagerapp.vercel.app"
+//dont put / at the end, that sucks
 const app = express()
 app.use(express.json())
 dotenv.config()
@@ -20,7 +21,6 @@ app.use(cors(
     {
         origin: ["http://localhost:3000", "https://walletmanagerapp.vercel.app"],
         credentials: true,
-  
     }
 ))
 
@@ -34,11 +34,11 @@ const dbConnect = async () => {
 
 
 //routes
-app.use('/', (req,res) => {
+app.get('/', (req, res) => {
     res.send('WalletManager')
 })
 app.use('/api', userRouter)
-app.use('/api', transactionRouter)
+app.use('/api/transaction', transactionRouter)
 app.all('*', (req, res, next) => {
     const err = new errorHandler(`Cannot find this ${req.originalUrl} page`, 404)
     next(err)
