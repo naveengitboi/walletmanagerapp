@@ -13,7 +13,7 @@
   background: white;
   padding: 0.5rem 0.85rem;
   display: grid;
-  grid-template-columns: 100px  repeat(7, 1fr);
+  grid-template-columns: 50px  repeat(8, 1fr);
   margin: 0.5rem 0;
 }
 .tsItem p 
@@ -23,7 +23,7 @@
   align-items: center;
 }
 
-.fromto{
+.description{
   grid-column: span 2;
 }
 .tsItem .userProfile {

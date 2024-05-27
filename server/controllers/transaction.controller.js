@@ -6,7 +6,6 @@ const transaction = asyncErrorHandler(async (req, res) => {
   console.log("req.body", req.body);
   const id = req.userPayload;
   let { type } = req.query;
-  console.log("type", type);
   if (type === undefined) { type = 'paid' }
   console.log("payload id", id);
   const modifiedData = {

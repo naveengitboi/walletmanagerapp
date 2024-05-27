@@ -9,7 +9,6 @@ import MessageModel from "./MessageModel";
 function Header() {
   const currentUser = useSelector((state) => state.isAnonymous.userExist)
   const [toggle, setToggle] = useState(false);
-  // console.log(userData);
   const toggleRef = useRef()
   let location = useLocation();
   useEffect(() => {

@@ -45,6 +45,7 @@ function Transactions() {
                 <div className="tsItemsHeader">
                     <p className='pSmall'>Profile</p>
                     <p className='pSmall fromToHeader'>from/To</p>
+                    <p className='pSmall descriptionHeader'>description</p>
                     <p className='pSmall'>type</p>
                     <p className='pSmall'>Date</p>
                     <p className='pSmall'>Through</p>
