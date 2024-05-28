@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { urlencoded } from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import cors from 'cors'
@@ -19,13 +19,18 @@ dotenv.config()
 app.use(cookieParser('wmanagerapp'))
 
 // "http://localhost:3000",
-app.use(cors(
-    {
-        origin:  "https://walletmanagerapp.vercel.app",
-        credentials: true,
-    }
-))
 
+const allowedOrigins = ["http://localhost:3000", "https://walletmanagerapp.vercel.app"]
+
+const corsOptions = {
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+}
+
+app.use(cors(corsOptions));
+app.use(express.urlencoded({ extended: true }));
+app.options('*', cors(corsOptions));
 // app.use(express.urlencoded({ extended: false }));
 
 //db connection
