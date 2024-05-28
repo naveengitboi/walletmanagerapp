@@ -17,9 +17,11 @@ const app = express()
 app.use(express.json())
 dotenv.config()
 app.use(cookieParser('wmanagerapp'))
+
+// "http://localhost:3000",
 app.use(cors(
     {
-        origin: ["http://localhost:3000", "https://walletmanagerapp.vercel.app"],
+        origin:  "https://walletmanagerapp.vercel.app",
         credentials: true,
         allowCredentials: true,
         accessControlAllowOrigin: true,
