@@ -29,8 +29,8 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-app.use(express.urlencoded({ extended: true }));
 app.options('*', cors(corsOptions));
+app.use(express.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: false }));
 
 //db connection
