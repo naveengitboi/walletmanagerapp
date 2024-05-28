@@ -21,6 +21,8 @@ app.use(cors(
     {
         origin: ["http://localhost:3000", "https://walletmanagerapp.vercel.app"],
         credentials: true,
+        allowCredentials: true,
+        accessControlAllowOrigin: true,
     }
 ))
 

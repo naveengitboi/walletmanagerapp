@@ -4,14 +4,16 @@ import '../pagesCss/Transactions.css'
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import api from '../api/axios';
 import { useDispatch, useSelector } from "react-redux";
-import { addCreditAmount, addDebitAmount } from "../Redux/TransactionSlice.js";
+import { addCreditAmount, addDebitAmount, addTransactions } from "../Redux/TransactionSlice.js";
 function Transactions() {
     const dispatch = useDispatch()
     const amountSelector = useSelector((state) => state.transaction)
 
 
+
     const [transactions, setTransactions] = useState([]);
     const [deleteFunc, setDeleteFunc] = useState(true)
+    
     useEffect(() => {
         const getAllTransactions = async () => {
             let allTransactions = await api.get('/transaction/history', {
@@ -20,13 +22,21 @@ function Transactions() {
 
             let history = allTransactions.data.output.history
             let amounts = allTransactions.data.output.amounts;
-            console.log(amounts)
+            let recentHistory = []
+
+            if (history.length < 4) {
+                recentHistory = history.slice()
+            }else{
+                recentHistory = history.slice(0,4)
+            }
             dispatch(addCreditAmount(amounts.credit))
             dispatch(addDebitAmount(amounts.debit))
-
+            dispatch(addTransactions([...recentHistory]))
             setTransactions(history);
         }
         getAllTransactions()
+
+        return () => {}
     }, [deleteFunc])
 
 

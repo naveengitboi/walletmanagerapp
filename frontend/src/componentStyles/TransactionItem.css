@@ -1,10 +1,5 @@
-.tsItem {
-  background: white;
-  padding: 0.5rem 0.85rem;
-  display: grid;
-  grid-template-columns: 50px repeat(8, 1fr);
-  margin: 0.5rem 0;
-}
+/* transaction history */
+
 .tsItem p {
   display: flex;
   justify-content: center;
@@ -37,7 +32,7 @@
   cursor: pointer;
 }
 
-/* historyItem */
+/* recent historyItem */
 .recentHistoryContainer {
   padding: 0.5rem 0.85rem;
 }
@@ -51,6 +46,30 @@
 }
 .historyItem .tsItem .pSmall {
   font-weight: 600;
+}
+.tsItemsHeader
+{
+  display: grid;
+  grid-template-columns: 50px repeat(5, 1fr);
+}
+
+.recentHistoryItem .tsItem
+{
+  display: grid;
+  grid-template-columns: 50px repeat(5, 1fr);
+}
+
+.recentHistoryItem .tsItem .userProfile 
+{
+  width: 30px;
+  height: 30px;
+}
+.tsItem {
+  background: white;
+  padding: 0.5rem 0.85rem;
+  display: grid;
+  grid-template-columns: 50px repeat(8, 1fr);
+  margin: 0.5rem 0;
 }
 
 @media screen and (max-width: 769px) {

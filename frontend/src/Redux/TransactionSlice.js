@@ -5,7 +5,7 @@ const initialState = {
     debitAmount:0,
     debtAmount: 0,
     totalAmount: 0,
-    lastTransactions: [],
+    transactions: [],
 }
 const transactionSlice = createSlice({
     name: "transaction",
@@ -23,13 +23,13 @@ const transactionSlice = createSlice({
         getTotalAmount:(state) => {
             state.totalAmount = state.creditAmount + state.debitAmount;
         },
-        addLastTransactions: (state, action) => {
-            state.lastTransactions = action.payload;
+        addTransactions: (state, action) => {
+            state.transactions = action.payload;
         }
     }
 
 })
 
-export const { addCreditAmount, addDebitAmount, addDebtAmount, addLastTransactions, getTotalAmount } = transactionSlice.actions;
+export const { addCreditAmount, addDebitAmount, addDebtAmount, addTransactions, getTotalAmount } = transactionSlice.actions;
 
 export default transactionSlice.reducer

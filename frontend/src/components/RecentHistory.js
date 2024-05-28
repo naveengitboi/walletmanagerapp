@@ -1,9 +1,12 @@
 import React from 'react'
 import HistoryItem from './HistoryItem'
 import '../componentStyles/TransactionItem.css'
-
+import {useSelector} from 'react-redux'
 
 function RecentHistory() {
+
+    const recentHistory = useSelector((state) => state.transaction)
+    console.log(recentHistory)
     return (
         <div className='page recentHistoryContainer'>
             <p className='tinyText addingDotAnimation'>Recent Transactions History <div className='dotAnimateIcon'></div></p>
@@ -15,7 +18,12 @@ function RecentHistory() {
                 <p className='tinyText'>Through</p>
                 <p className='tinyText'>Amount</p>
             </div>
-            <HistoryItem />
+            
+            {
+                recentHistory.transactions.map((transaction) => {
+                    return <HistoryItem key={transaction._id} transaction={transaction} />
+                })
+            }
 
 
         </div>

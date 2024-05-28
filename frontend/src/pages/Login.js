@@ -37,7 +37,7 @@ function Login() {
       .catch((err) => console.log(err.response));
 
       
-      if(resp.status === 200){
+      if(resp && resp.status === 200){
         dispatch(addUserExist())
         navigate('/');
       }
