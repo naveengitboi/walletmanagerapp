@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-
   "dependencies": {
     "@canvasjs/react-charts": "^1.0.2",
     "@reduxjs/toolkit": "^2.2.2",
@@ -43,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "vercel": "^34.2.3"
   }
 }
