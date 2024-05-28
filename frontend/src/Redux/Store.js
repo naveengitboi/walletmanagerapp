@@ -8,10 +8,14 @@ const isAnoPersistConfig = {
     key: 'currentUser',
     storage: storageSession 
 }
+const transactionPersistConfig = {
+    key: 'transactions',
+    storage: storageSession
+}
 
 const rootReducers = combineReducers({
     isAnonymous: persistReducer(isAnoPersistConfig, isAnonymousReducer),
-    transaction: transactionReducer
+    transaction: persistReducer(transactionPersistConfig, transactionReducer)
 })
 
 export const store = configureStore({

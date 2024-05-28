@@ -272,7 +272,12 @@ body::-webkit-scrollbar,
 }
 
 .addHoverEffect:hover {
-  background-color: lightgray;
+  background-color: rgb(231, 231, 231);
+}
+
+.activeBgLink
+{
+  background: rgb(197, 32, 32);
 }
 .addGreenHoverEffect:hover {
   background-color: var(--dark_green);

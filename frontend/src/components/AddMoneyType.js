@@ -57,10 +57,10 @@ function AddMoneyType(props) {
                 <input type="text" placeholder='Groceries, Saloon ....' className='pMedium' name="description" onChange={inputHandler} />
             </div>
 
-            <button className={props.type.btnColorCode ? 'lightGreenBg defaultBtn' : 'lightGreenBg defaultBtn lightRedBg'} onClick={addTransButton} >{props.type.btn}</button>
+            <button className={props.type.btnColorCode ? 'lightGreenBg defaultBtn addGreenHoverEffect' : 'lightGreenBg defaultBtn lightRedBg'} onClick={addTransButton} >{props.type.btn}</button>
 
 
-            <button className='defaultBtn darkRed' onClick={resetHandler}>Reset</button>
+            <button className='defaultBtn darkRed addHoverEffect' onClick={resetHandler}>Reset</button>
 
 
         </div>
