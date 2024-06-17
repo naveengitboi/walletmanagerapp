@@ -22,7 +22,7 @@ function PasswordUpdate() {
     }
     const handlePwdChange = async (e) => {
         e.preventDefault();
-        if(userDetails.newPwd != userDetails.confirmNewPwd){
+        if(userDetails.newPwd !== userDetails.confirmNewPwd){
             alert('Enter same in both the text areas');
         }
         else{

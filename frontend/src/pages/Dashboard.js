@@ -1,6 +1,6 @@
 import React from 'react'
 import DashboardHeader from '../components/DashboardHeader'
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import '../pagesCss/Dashboard.css'
 import Analytics from '../components/Analytics'
 import RecentHistory from '../components/RecentHistory'
