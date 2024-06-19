@@ -30,7 +30,7 @@ function Login() {
       alert("Please accept tand c");
     } else {
       
-      const resp = await api.post("/login", userDetails, {
+      const resp = await api.post("/users/login", userDetails, {
         withCredentials:true,
         credentials: 'include',
       })

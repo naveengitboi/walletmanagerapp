@@ -18,7 +18,7 @@ function Profile() {
 
     useEffect(() => {
         const getOwnerDetails = async () => {
-            const userData = await api.get('/user', {
+            const userData = await api.get('/users/user', {
                 withCredentials: true,
                 credentials: 'include',
             })
