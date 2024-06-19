@@ -5,10 +5,10 @@ import "../pagesCss/Register.css";
 import api from "../api/axios.js";
 import { useDispatch } from "react-redux";
 import { addUserExist } from "../Redux/IsAnonymous.js";
+import SignInWithGoogle from "../components/SignInWIthGoogle.js";
 function Login() {
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate()
 
   const [userDetails, setUserDetails] = useState({
@@ -93,10 +93,7 @@ function Login() {
           </button>
         </Link>
 
-        <button className="defaultBtn buttonWithIcon">
-          Google
-          <MdEast />
-        </button>
+        <SignInWithGoogle/>
       </div>
     </div>
   );

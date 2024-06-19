@@ -51,11 +51,9 @@ const Settings = ()=> {
       </div>
 
       <div className="updateBtnsContainer settingsOptionsTop">
+        
         <div className="updateBtn">
-          <Link><button className='defaultBtn buttonWithIcon'>Report Bug <MdBugReport/> </button></Link>
-        </div>
-        <div className="updateBtn">
-          <a href='https://github.com/naveengitboi/walletmanagerapp' target='_blank' rel="noreferrer"><button className='defaultBtn buttonWithIcon'>Contribute Code <MdCode /> </button></a>
+          <a href='https://github.com/naveengitboi/walletmanagerapp' target='_blank' rel="noreferrer"><button className='defaultBtn buttonWithIcon'>Contribute/Report Code <MdCode /> </button></a>
         </div>
         <div className="updateBtn">
           <Link><button className='defaultBtn buttonWithIcon lightRedBg svgWhite' onClick={deleteAccountHandler}>Delete Account <MdDelete/> </button></Link>

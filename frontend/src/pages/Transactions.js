@@ -75,9 +75,9 @@ function Transactions() {
                 </div>
 
                 {
-                    transactions.map((transaction) => {
+                    transactions.length ? transactions.map((transaction) => {
                         return <TransactionItem key={transaction._id} transaction={transaction} itemDeleteHanlder={itemDeleteHanlder} />
-                    })
+                    }): <p className='noTransText pLarge' style={{'textAlign':'center', 'padding':'2rem 0'}} >No Transactions</p>
                 }
             </div>
         </div>
