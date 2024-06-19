@@ -39,7 +39,7 @@ function Profile() {
 
     const updateUserDb = async () => {
         console.log(userDetails)
-        const updateUser = await api.put('/update', userDetails, {
+        const updateUser = await api.put('/users/update', userDetails, {
             withCredentials: true,
             credentials: 'include'
         })
