@@ -11,14 +11,15 @@ function Profile() {
         lastName: '',
         email: '',
         phone: '',
-        accountNumbers: ['']
+        accountNumbers: [''],
+        userProfile: ''
     }
     const [userDetails, setuserDetails] = useState(currentUser)
     const [giveEditAccess, setGiveEditAccess] = useState(false)
 
     useEffect(() => {
         const getOwnerDetails = async () => {
-            const userData = await api.get('/user', {
+            const userData = await api.get('/users/user', {
                 withCredentials: true,
                 credentials: 'include',
             })
@@ -39,7 +40,7 @@ function Profile() {
 
     const updateUserDb = async () => {
         console.log(userDetails)
-        const updateUser = await api.put('/update', userDetails, {
+        const updateUser = await api.put('/users/update', userDetails, {
             withCredentials: true,
             credentials: 'include'
         })
@@ -51,8 +52,8 @@ function Profile() {
         <div className='page profilePage'>
             <div className="profileSection">
                 <div className="profileImgContainer">
-                    {/* <img src="/profile.png" alt="" /> */}
-                    <div className="gradientProfile"></div>
+                    { userDetails.userProfile ? <img src="/profile.png" alt="" /> :
+                    <div className="gradientProfile"></div>}
                 </div>
                 <div className="profileEdits">
                     <div className="editSection">

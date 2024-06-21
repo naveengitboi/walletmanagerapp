@@ -22,11 +22,11 @@ function PasswordUpdate() {
     }
     const handlePwdChange = async (e) => {
         e.preventDefault();
-        if(userDetails.newPwd != userDetails.confirmNewPwd){
+        if(userDetails.newPwd !== userDetails.confirmNewPwd){
             alert('Enter same in both the text areas');
         }
         else{
-            const response = await api.put('/update/password',{password : userDetails.newPwd}, {
+            const response = await api.put('/users/update/password',{password : userDetails.newPwd}, {
                 withCredentials: true,
                 credentials: 'include',
             }).catch((err) => console.log(err.response));
@@ -44,8 +44,8 @@ function PasswordUpdate() {
     return (
         <div className='page registerPage'>
             <form action="">
-                <input type="password" placeholder='Enter New Password' className='inputEle' name='newPwd' onChange={handleChage} />
-                <input type="password" placeholder='Confirm New Password' className='inputEle' name='confirmNewPwd' onChange={handleChage} />
+                <input type="text" placeholder='Enter New Password' className='inputEle' name='newPwd' onChange={handleChage} />
+                <input type="text" placeholder='Confirm New Password' className='inputEle' name='confirmNewPwd' onChange={handleChage} />
 
                 <button type='submit' className='addGreenHoverEffect defaultBtn buttonWithIcon lightGreenBg svgWhite' onClick={handlePwdChange}>Update <MdEast /> </button>
 

@@ -5,10 +5,10 @@ import "../pagesCss/Register.css";
 import api from "../api/axios.js";
 import { useDispatch } from "react-redux";
 import { addUserExist } from "../Redux/IsAnonymous.js";
+import SignInWithGoogle from "../components/SignInWIthGoogle.js";
 function Login() {
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate()
 
   const [userDetails, setUserDetails] = useState({
@@ -30,7 +30,7 @@ function Login() {
       alert("Please accept tand c");
     } else {
       
-      const resp = await api.post("/login", userDetails, {
+      const resp = await api.post("/users/login", userDetails, {
         withCredentials:true,
         credentials: 'include',
       })
@@ -93,10 +93,7 @@ function Login() {
           </button>
         </Link>
 
-        <button className="defaultBtn buttonWithIcon">
-          Google
-          <MdEast />
-        </button>
+        <SignInWithGoogle/>
       </div>
     </div>
   );

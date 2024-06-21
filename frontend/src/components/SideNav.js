@@ -9,10 +9,10 @@ function SideNav() {
     <div className='sideNavbar'>
       <ul className="dashboardLinks">
         <li><NavLink to='/'><AiOutlineRadarChart /></NavLink></li>
-        <li><NavLink to='/analytics'><VscGraphScatter /></NavLink></li>
-        <li><NavLink to='/beta'><AiOutlineApi /></NavLink></li>
+        {/* <li><NavLink to='/analytics'><VscGraphScatter /></NavLink></li> */}
+        {/* <li><NavLink to='/beta'><AiOutlineApi /></NavLink></li> */}
         <li><NavLink to='/transactions'><AiOutlineDollarCircle /></NavLink></li>
-        <li><NavLink to='/guide'><AiOutlineProfile /></NavLink></li>
+        {/* <li><NavLink to='/guide'><AiOutlineProfile /></NavLink></li> */}
         
       </ul>
       <ul className="bottomLinks">
