@@ -8,9 +8,12 @@ import { addUserExist } from "../Redux/IsAnonymous.js";
 import SignInWithGoogle from "../components/SignInWIthGoogle.js";
 import Model from "../components/Model";
 function Login() {
+  const [viewModel, setViewModel] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate()
-
+  const navigateRegister = () => {
+    navigate('/register')
+  }
   const [userDetails, setUserDetails] = useState({
     userName: "",
     password: "",
@@ -29,25 +32,20 @@ function Login() {
     } else if (userDetails.tc === false) {
       alert("Please accept tand c");
     } else {
-       try{
-      const resp = await api.post("/users/login", userDetails, {
-        withCredentials: true,
-        credentials: 'include',
-      })
+      try {
+        const resp = await api.post("/users/login", userDetails, {
+          withCredentials: true,
+          credentials: 'include',
+        })
 
-      if (resp && resp.status === 200) {
-        dispatch(addUserExist())
-        navigate('/');
-      }
-      }catch(error){
-        const navigateRegister = () => {
-           navigate('/register')
+        if (resp && resp.status === 200) {
+          dispatch(addUserExist())
+          navigate('/');
         }
-        <Model header={"Invalid User"} description={"Enter Valid Details or Signup"}  onCancel={() => console.log('do nothing')} type={"Register"} onSubmit={navigateRegister} />
-        console.log(error.response)
+      } catch (error) {
+        setViewModel(true)
+        console.log("error", error.response)
       }
-
-
     }
   };
 
@@ -56,6 +54,9 @@ function Login() {
       {/* <div className="bgSvg">
         <img src="/assets/bg/bgillu.svg" alt="" />
       </div> */}
+
+      {viewModel && <Model setViewModel={setViewModel} header={"Unauthorised User"} description={"Please Valid details or register to the site"} type={"Register"} onCancel={() => console.log('Do nothing ')
+      } onSubmit={() => navigateRegister()} />}
       <form action="">
         <input
           type="text"

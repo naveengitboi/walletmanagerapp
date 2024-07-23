@@ -1,25 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 import '../componentStyles/Model.css'
 
-const Model = ({type,  header, description, onCancel, onSubmit }) => {
-  const [openModel, setOpenModel] = useState(true)
+const Model = ({ type, header, description, onCancel, onSubmit, setViewModel }) => {
   const modelRef = useRef(null)
   useEffect(() => {
     const outerClick = (e) => {
       if (modelRef?.current?.className != e.target.className) {
-        setOpenModel(false)
+        setViewModel(false)
       }
     }
     window.addEventListener('click', outerClick)
-    window.addEventListener('keydown', setOpenModel(false) )
 
     return () => {
       window.removeEventListener('click', outerClick)
-    window.removeEventListener('keydown', setOpenModel(false) )
     }
   })
   return (
-    <div className={`modelWrapper ${openModel ? "openModel" : ""}`} ref={modelRef} >
+    <div className={`modelWrapper openModel`} ref={modelRef} >
       < div className="modelInfo" >
         <p className="pLarge">
           {header}
@@ -29,15 +26,19 @@ const Model = ({type,  header, description, onCancel, onSubmit }) => {
         </p>
       </div >
       <div className="btnsGroup ">
-        <button className="pMedium defaultBtn" onClick={() => {
-          setOpenModel(false)
-          onCancel()}
-        }>
+        <button className="pMedium defaultBtn"
+          onClick={() => {
+            if (onCancel) {
+              onCancel();
+            }
+            setViewModel(false)
+          }}
+        >
           Cancel
         </button>
         <button className="darkGreenBg pMedium defaultBtn" onClick={() => {
-          onSubmit();
-          setOpenModel(false)
+          setViewModel(false);
+          onSubmit()
         }}>
           {type}
         </button>
