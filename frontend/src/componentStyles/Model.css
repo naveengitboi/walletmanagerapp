@@ -1,0 +1,32 @@
+.modelWrapper{
+  padding: 3vh 5vw;
+  background: #FFFCFE;
+  border-radius:0.5rem;
+  position:absolute;
+  top: -100%;
+  opacity: 0;
+  transition: all 0.25s ease;
+  min-width: 400px;
+}
+.openModel{
+  position: absolute;
+  top:-10%;
+  opacity:1;
+}
+.modelInfo{
+  margin: 2vh 0;
+}
+.btnsGroup{
+  display: flex;
+  justify-content:flex-end;
+}
+
+.btnsGroup button{
+  box-shadow:3px 3px #b6b8b6;
+}
+
+.btnsGroup button:nth-child(2){
+  margin-left:0.5rem ;
+
+}
+

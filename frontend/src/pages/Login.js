@@ -6,8 +6,8 @@ import api from "../api/axios.js";
 import { useDispatch } from "react-redux";
 import { addUserExist } from "../Redux/IsAnonymous.js";
 import SignInWithGoogle from "../components/SignInWIthGoogle.js";
+import Model from "../components/Model";
 function Login() {
-
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -29,24 +29,31 @@ function Login() {
     } else if (userDetails.tc === false) {
       alert("Please accept tand c");
     } else {
-      
+       try{
       const resp = await api.post("/users/login", userDetails, {
-        withCredentials:true,
+        withCredentials: true,
         credentials: 'include',
       })
-      .catch((err) => console.log(err.response));
 
-      
-      if(resp && resp.status === 200){
+      if (resp && resp.status === 200) {
         dispatch(addUserExist())
         navigate('/');
       }
+      }catch(error){
+        const navigateRegister = () => {
+           navigate('/register')
+        }
+        <Model header={"Invalid User"} description={"Enter Valid Details or Signup"}  onCancel={() => console.log('do nothing')} type={"Register"} onSubmit={navigateRegister} />
+        console.log(error.response)
+      }
+
+
     }
   };
 
   return (
     <div className="page registerPage">
-     {/* <div className="bgSvg">
+      {/* <div className="bgSvg">
         <img src="/assets/bg/bgillu.svg" alt="" />
       </div> */}
       <form action="">
@@ -93,7 +100,7 @@ function Login() {
           </button>
         </Link>
 
-        <SignInWithGoogle/>
+        <SignInWithGoogle />
       </div>
     </div>
   );

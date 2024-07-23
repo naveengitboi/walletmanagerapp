@@ -15,7 +15,7 @@ const Settings = ()=> {
     if(confirmDelete){
         try {
           const logOutFunc = async () => {
-            await api.get('/logout', {
+            await api.get('/users/logout', {
               withCredentials: true,
             })
             dispatch(removeUserExist());

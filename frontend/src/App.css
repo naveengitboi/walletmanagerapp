@@ -10,8 +10,8 @@
 
 :root {
   /* font family */
-  --sora: "Sora", "Space Grotesk", sans-serif;
-  --monte: "Montserrat", "Inter", sans-serif;
+  --sora: "Sora", "Space Grotesk", "Roboto", sans-serif;
+  --monte: "Montserrat", "Inter","Roboto", sans-serif;
 
   /* font size */
   --h_50px: 2.35rem;
