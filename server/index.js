@@ -23,38 +23,39 @@ app.use(cookieParser('wmanagerapp'))
 const allowedOrigins = ["http://localhost:3000", "https://walletmanagerapp.vercel.app"]
 
 const corsOptions = {
-    origin: allowedOrigins,
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  origin: "http://localhost:3000",
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 }
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
-app.use(express.urlencoded({ extended: true }));
+// app.options('*', cors(corsOptions));
+// app.use(express.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: false }));
 
 //db connection
+console.log(process.env.MONGO_URL)
 const dbConnect = async () => {
-    mongoose.connect(process.env.MONGO_URL)
-    console.log('db Connected')
+  const a = await mongoose.connect(process.env.MONGO_URL)
+  console.log('db Connected')
 }
 
 
 //routes
 app.get('/', (req, res) => {
-    res.send('WalletManager')
+  res.send('Welcome to home page of wallet manager app')
 })
 app.use('/api/users', userRouter)
 app.use('/api/transaction', transactionRouter)
 app.all('*', (req, res, next) => {
-    const err = new errorHandler(`Cannot find this ${req.originalUrl} page`, 404)
-    next(err)
+  const err = new errorHandler(`Cannot find this ${req.originalUrl} page`, 404)
+  next(err)
 })
 
 app.use(errorMiddleware)
 
 //listen 
 app.listen(process.env.PORT || 8000, () => {
-    console.log('port running at', process.env.PORT)
-    dbConnect()
+  console.log('port running at', process.env.PORT)
+  dbConnect()
 })

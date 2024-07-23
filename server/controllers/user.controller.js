@@ -6,6 +6,7 @@ import asyncErrorHandler from "../utils/asynErrorHandler.js";
 //sign in
 const registerUser = asyncErrorHandler(async (req, res) => {
   const userData = req.body;
+  console.log(userData.userName)
   const isUserExists = await userModel.findOne({ userName: userData.userName });
   if (isUserExists) {
     res.status(400).json({ success: false, output: "User already exists" })
@@ -21,7 +22,6 @@ const registerUser = asyncErrorHandler(async (req, res) => {
   const newUser = new userModel(dataModified);
   const addedUser = await newUser.save();
   generateToken(res, { userId: addedUser._id });
-
   res.send("user added successfully");
 
 

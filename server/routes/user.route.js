@@ -7,9 +7,9 @@ import { verifyToken } from '../middlewares/auth.js';
 const router = express.Router()
 
 //get users
-router.get('/usersdata' ,getAllUsers)
+router.get('/usersdata', getAllUsers)
 //get owner
-router.get('/user',verifyToken,  getOwnUser)
+router.get('/user', verifyToken, getOwnUser)
 
 //updateUserDetails
 router.put('/update', verifyToken, updateUser)
@@ -25,9 +25,8 @@ router.post('/login', loginUser)
 
 //lout out
 router.get('/logout', (req, res) => {
-    res.clearCookie("token");
-    res.send('Log out successful');
+  res.clearCookie("token");
+  res.send('Log out successful');
 })
-
 
 export default router
