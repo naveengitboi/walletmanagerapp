@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import '../componentStyles/Model.css'
 
-const Model = ({ type, header, description, onCancel, onSubmit, setViewModel }) => {
+const Model = ({ type, header, description, onCancel, onSubmit, setViewModel, btnColor="darkGreenBg"}) => {
   const modelRef = useRef(null)
   useEffect(() => {
     const outerClick = (e) => {
@@ -36,7 +36,7 @@ const Model = ({ type, header, description, onCancel, onSubmit, setViewModel }) 
         >
           Cancel
         </button>
-        <button className="darkGreenBg pMedium defaultBtn" onClick={() => {
+        <button className={` pMedium defaultBtn ${btnColor} `} onClick={() => {
           setViewModel(false);
           onSubmit()
         }}>

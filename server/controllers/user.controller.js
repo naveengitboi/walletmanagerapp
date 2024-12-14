@@ -2,7 +2,7 @@ import userModel from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import { generateToken } from "../middlewares/auth.js";
 import asyncErrorHandler from "../utils/asynErrorHandler.js";
-
+import { generateRandomNumber } from './MagicEmail.js'
 //sign in
 const registerUser = asyncErrorHandler(async (req, res) => {
   const userData = req.body;
@@ -22,14 +22,12 @@ const registerUser = asyncErrorHandler(async (req, res) => {
   const newUser = new userModel(dataModified);
   const addedUser = await newUser.save();
   generateToken(res, { userId: addedUser._id });
-  res.send("user added successfully");
-
-
+  generateRandomNumber(6)
+  res.status(200).json({ success: true, output: "user added successfully" });
 });
 
 //login
 const loginUser = asyncErrorHandler(async (req, res) => {
-
   const isUserFound = await userModel.findOne({
     userName: req.body.userName,
   });
@@ -47,7 +45,11 @@ const loginUser = asyncErrorHandler(async (req, res) => {
         .json({ success: false, output: "Bad request or Wrong Credintials" });
     }
   } else {
-    res.status(401).json({ success: false, output: "Unauthorized User" });
+    if (req.body.isGmailUser) {
+      registerUser(req, res)
+    } else {
+      res.status(401).json({ success: false, output: "Unauthorized User" });
+    }
   }
 });
 
@@ -60,8 +62,9 @@ const getAllUsers = asyncErrorHandler(async (req, res) => {
 //get one user
 const getOwnUser = asyncErrorHandler(async (req, res) => {
   const id = req.userPayload;
-  //  console.log(req)
-  const user = await userModel.findById(id);
+  const detials = await userModel.findById(id);
+  const { password, ...user } = detials._doc
+  console.log(user)
   res.status(200).json({ success: true, output: user });
 });
 

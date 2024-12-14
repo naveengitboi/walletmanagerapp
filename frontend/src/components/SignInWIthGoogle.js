@@ -23,13 +23,20 @@ function SignInWithGoogle() {
         firstName: user.displayName,
         lastName: user.displayName,
         userProfile: user.photoURL,
+        isGmailUser: true
       }
+
 
       const resp = await api.post('/users/login', userData, {
         withCredentials: true,
         credentials: 'include',
       })
-      console.log(resp)
+      if (resp && resp.status == 401) {
+        const resp = await api.post('/users/register', userData, {
+          withCredentials: true,
+          credentials: 'include',
+        })
+      }
 
       if (resp && resp.status === 200) {
         dispatch(addUserExist())

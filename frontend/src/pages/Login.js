@@ -55,8 +55,8 @@ function Login() {
         <img src="/assets/bg/bgillu.svg" alt="" />
       </div> */}
 
-      {viewModel && <Model setViewModel={setViewModel} header={"Unauthorised User"} description={"Please Valid details or register to the site"} type={"Register"} onCancel={() => console.log('Do nothing ')
-      } onSubmit={() => navigateRegister()} />}
+      {viewModel && <Model setViewModel={setViewModel} header={"Unauthorised User"} description={"Please Valid details or register to the site"} type={"Register"} onCancel={() => console.log('Do nothing ')}
+        onSubmit={() => navigateRegister()} />}
       <form action="">
         <input
           type="text"

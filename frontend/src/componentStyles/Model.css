@@ -1,32 +1,30 @@
-.modelWrapper{
+.modelWrapper {
   padding: 3vh 5vw;
-  background: #FFFCFE;
-  border-radius:0.5rem;
-  position:absolute;
+  background: #fffcfe;
+  border-radius: 0.5rem;
+  position: absolute;
   top: -100%;
   opacity: 0;
   transition: all 0.25s ease;
-  min-width: 400px;
+  min-width: 350px;
 }
-.openModel{
+.openModel {
   position: absolute;
-  top:-10%;
-  opacity:1;
+  top: -10%;
+  opacity: 1;
 }
-.modelInfo{
-  margin: 2vh 0;
+.modelInfo {
+  margin: 3vh 0;
 }
-.btnsGroup{
+.btnsGroup {
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
 }
 
-.btnsGroup button{
-  box-shadow:3px 3px #b6b8b6;
+.btnsGroup button {
+  box-shadow: 3px 3px #b6b8b6;
 }
 
-.btnsGroup button:nth-child(2){
-  margin-left:0.5rem ;
-
+.btnsGroup button:nth-child(2) {
+  margin-left: 0.5rem;
 }
-
